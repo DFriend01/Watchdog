@@ -6,11 +6,11 @@ import { error } from "@sveltejs/kit";
 
 
 export async function POST({
-    url, request
+    request
 }) {
     const json = (await request.json());
     const prompt = json.prompt
-    const temp = json.temp
+    const temp = json.temp ? json.temp : "0.5"
     try {
         const res = await openai.createCompletion(
             {

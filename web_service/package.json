@@ -20,6 +20,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-vercel": "^3.0.0",
 		"openai": "^3.2.1"
 	}
 }
