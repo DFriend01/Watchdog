@@ -1,25 +1,70 @@
 <script lang="ts">
-    let url : string;
+    import Divider from "./Divider.svelte";
 
-    async function getUrl() {
-        const [tab] = await chrome.tabs.query(
-            {
-                active:true, currentWindow: true
-            }
-        );
 
-        url = tab.url!;
+    const apiRoute = "https://watch-dog.vercel.app/api/gpt/"
+    let url: string;
+
+    let text = ""
+
+    let response = ""
+
+
+    async function askGPT(){
+        response = "Loading response"
+
+        fetch(apiRoute+"scam", {
+            
+            method:"POST",
+            body: JSON.stringify({
+                prompt: "Check if there are anything scam related in the following text." + text
+            })
+        }).then(res=>res.text()).then(
+            txt => response = txt
+        )
     }
 </script>
 
+<div id="root" >
 
+    <h1>
+        Watch_Dog 
+    </h1>
+    <p>Enter your scam here</p>
+    <textarea placeholder="woof woof"  bind:value={text}/>
+    <button on:click={askGPT}>GO</button>
 
-<button on:click={getUrl}>
+    {#if response}
+        <Divider/>
+        GPT Response:
+        <p>{response}</p>
 
-    Get CUrrent URL
-</button>
+    {:else}
+        Nothing here yet.
 
+    {/if}
+</div>
 
-{#if url}
-    The current url is: {url}
-{/if}
+<style>
+    #root {
+        padding: 1rem;
+        font-family: "Courier New", monospace;
+    }
+
+    h1 {
+        margin: 0.5rem;
+        font-size: larger;
+        text-shadow: 2px 2px #0000005e;
+
+        background: linear-gradient(to left, black 30%, transparent 100%),
+            url(https://grainy-gradients.vercel.app/noise.svg);
+        filter: contrast(200%) brightness(1000%);
+    }
+
+    textarea {
+        width: 380px;
+        height: 200px;
+    }
+
+    /*  url(https://grainy-gradients.vercel.app/noise.svg);  */
+</style>
