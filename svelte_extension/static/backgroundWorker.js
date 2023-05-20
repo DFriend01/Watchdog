@@ -10,4 +10,15 @@ chrome.contextMenus.create(
 )
 
 
-c
+
+
+function clicked(selection, tab){
+    if (selection.menuItemId === "woof"){
+
+        console.log("sending")
+        chrome.tabs.sendMessage(
+            tab.id,
+            "woof woof"
+        )
+    }
+}
