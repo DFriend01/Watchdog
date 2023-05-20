@@ -22,7 +22,7 @@ function updateContextMenus() {
 }
 
 function listenForContextMenu() {
-    window.addEventListener("message", (event) => {
+    chrome.runtime.onMessage.addListener((msg, sender, responder) => {
         console.log("Received message!");
         if (msg.action === 'watchdogContextSelected') {
             console.log("Noice");
