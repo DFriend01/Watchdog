@@ -1,0 +1,14 @@
+{
+    "name": "WatchDog",
+    "description": "Woof woof",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "permissions": [
+      "activeTab"
+    ],
+    "action": {
+      "default_title": "WatchDog Action window",
+      "default_icon": "favicon.png",
+      "default_popup": "index.html"
+    }
+  }
