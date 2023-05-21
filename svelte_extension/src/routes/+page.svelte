@@ -16,12 +16,36 @@
         {
             yes: "This Content could be a scam. ",
             no: "This content is most likely not a scam.",
-            prompt: "Detect if its possible the following text contains any attempt to scam. Explain your reasoning. Must start the response with Yes if so, or with No otherwise. Respond with N/A if neither.\n\n",
+
+            prompt: `
+                You are an AI assistant who helps consumers identify if text content could be scam. 
+                Detect if the provided text after the triple dash lines could be a scam. Your answer should include the following:
+                
+                1. A "Yes" or "No" statement indicating that the text is a scam or not.
+                2. You should explain why you came to your conclusion, specifically referencing the originally provided text.
+                3. Your response should be no longer than 3 sentences.
+
+                ---
+
+            `
+            //prompt: "Detect if its possible the following text contains any attempt to scam. Explain your reasoning. Must start the response with Yes if so, or with No otherwise. Respond with N/A if neither.\n\n",
         },
         {
             yes: "This content could contain misinformation.",
             no: "This content appears to be truthful.",
-            prompt: "Detect if the following text contains false information. Explain your reasoning. Must start the response with yes or no. If neither, say N/A.\n\n",
+            prompt: `
+                You are an AI assistant that helps consumers indentify misinformation on the internet. Detect if the provided text after the triple dash
+                lines is truthful or not. Your answer should include the following:
+
+                1. A "Yes" or "No" statement indicating that the text is misinformation or not. If you cannot tell, then indicate this.
+                2. You should explain why you came to your conclusion, specifically referencing the originally provided text.
+                3. Your response should be no longer than 3 sentences.
+
+                ---
+
+            `
+            
+            //prompt: "Detect if the following text contains false information. Explain your reasoning. Must start the response with yes or no. If neither, say N/A.\n\n",
         },
         {
             yes: "This content could be Ai generated.",
