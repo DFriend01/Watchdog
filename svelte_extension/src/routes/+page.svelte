@@ -140,7 +140,7 @@
         results = [];
         Promise.all(questions.map((item) => askGPT(text, item.prompt))).then(
             (res) => {
-                results = res.map((item) => item.replace(/^([\s\.\,\-\_])*(?:\w)/g, ""));
+                results = res.map((item) => item.replace(/^[^\w]*/g, ""));
             }
         );
     }
