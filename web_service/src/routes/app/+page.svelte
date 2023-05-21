@@ -61,7 +61,8 @@
                     - Promises of high returns with zero risk.
                     - Professional-looking investment websites or crypto exchanges with little to no information about the company. 
                     - The scammer offers to walk you through your first few trades and claims to have insider knowledge of the market.
-
+                    - Involing large sums of money via trading NFTs
+                    
                 2. Warning signs of a romance scam:
                     - The person wants to quickly move from the social media site to WhatsApp or texting.
                     - They promise to meet in person but come up with excuses for why they can’t.
