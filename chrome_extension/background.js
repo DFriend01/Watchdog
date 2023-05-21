@@ -7,7 +7,7 @@ function handleContextMenuClick(info, tab) {
     if (info.menuItemId === CONTEXT_MENU_OPTION_ID) {
         // Get the clicked DOM element from the target element ID
         console.log("About to send message");
-        chrome.tabs.sendMessage(tab.id, { action: 'watchdogContextSelected' });
+        chrome.tabs.sendMessage(tab.id, {action: 'watchdogContextSelected', content: info.selectionText});
     }
 }
 
@@ -15,10 +15,10 @@ function handleContextMenuClick(info, tab) {
 chrome.contextMenus.onClicked.addListener(handleContextMenuClick);
 
 // Create the context menu
-chrome.contextMenus.create({
-    id: CONTEXT_MENU_OPTION_ID,
-    title: 'Watchdog',
-    contexts: ['all'],
-    documentUrlPatterns: ['<all_urls>'],
-    targetUrlPatterns: ['<all_urls>'],
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.contextMenus.create({
+        id: CONTEXT_MENU_OPTION_ID,
+        title: 'Watchdog',
+        contexts: ['all'],
+    });
 });
