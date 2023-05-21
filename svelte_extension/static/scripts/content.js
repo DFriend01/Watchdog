@@ -42,7 +42,38 @@ let questions = [
     {
         yes: "This Content could be a scam. ",
         no: "This content is most likely not a scam.",
-        prompt: "Detect if its possible the following text contains any attempt to scam. Explain your reasoning. Must start the response with Yes if so, or with No otherwise. Respond with N/A if neither.\n\n"
+        prompt: `
+            You are an AI assistant who helps consumers identify if text content could be scam. 
+            
+            The following are examples of common scams:
+
+            - Phishing Scams: These involve sending fraudulent emails or messages that appear to be from reputable sources, such as banks or government agencies, aiming to trick recipients into revealing sensitive information like passwords or credit card details.
+
+            - Online Shopping Scams: Scammers create fake online stores or auction listings to attract buyers. They may collect payment without delivering the promised products or provide counterfeit or substandard items.
+
+            - Investment and Ponzi Schemes: Fraudsters promise high returns on investments or offer pyramid-like schemes where new investors' money is used to pay previous investors. Eventually, the scheme collapses, and many participants lose their money.
+
+            - Tech Support Scams: Scammers contact victims, posing as tech support personnel from well-known companies, claiming that their computer is infected with a virus. They may request remote access to the computer or sell unnecessary software/services.
+
+            - Lottery or Sweepstakes Scams: Victims receive notifications stating they have won a lottery or sweepstakes, often accompanied by requests for upfront fees or personal information to claim the prize. In reality, there is no legitimate prize, and scammers aim to steal money or identity.
+
+            - Identity Theft: Scammers steal personal information (e.g., Social Security numbers, credit card details) to commit fraud, such as opening accounts, making purchases, or applying for loans under victims' names.
+
+            - Employment Scams: Scammers pose as employers, offering job opportunities that require upfront fees or personal information. They may also conduct fake interviews and ask for sensitive details or bank account information.
+
+            - Charity Scams: Scammers exploit people's generosity by creating fake charities, particularly during times of disaster or tragedy. They may solicit donations that never reach the intended cause.
+
+            Detect if the provided text after the triple dash lines could be a scam. Your answer should include the following:
+            
+            1. A "Yes" or "No" statement indicating that the text is a scam or not.
+            2. You should explain why you came to your conclusion, specifically referencing the originally provided text.
+            3. Your response should be no longer than 3 sentences.
+
+            ---
+
+        `
+
+        //prompt: "Detect if its possible the following text contains any attempt to scam. Explain your reasoning. Must start the response with Yes if so, or with No otherwise. Respond with N/A if neither.\n\n"
     },
     {
         yes: "This content could contain misinformation.",
