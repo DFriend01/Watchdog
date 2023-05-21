@@ -1,7 +1,8 @@
 
-import { vitePreprocess } from '@sveltejs/kit/vite';
+// import { vitePreprocess } from '@sveltejs/kit/vite';
 import adapter from '@sveltejs/adapter-vercel';
 
+import preprocess from 'svelte-preprocess';
 
 /** @type {import('vite').Plugin} */
 const viteServerConfig = {
@@ -21,7 +22,7 @@ const viteServerConfig = {
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: vitePreprocess(),
+	preprocess: preprocess(),
 
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
@@ -30,7 +31,9 @@ const config = {
 		adapter: adapter(),
 		csrf: {
 			checkOrigin: false
-		}
+		},
+		
+		
 	},
 };
 
