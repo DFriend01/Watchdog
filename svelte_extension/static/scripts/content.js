@@ -90,9 +90,10 @@ const insertMsgBox = (message) => {
     box.id = "MessageBox";
 
     box.style.cssText = `
+        all:initial;
+
         width: 400px;
-        
-      
+
         border: 2px solid #2563eb;
         position: absolute;
        
@@ -194,25 +195,25 @@ const insertMsgBox = (message) => {
 }
 
 function removeParagraphHighlighting() {
-    if(clickedParagraph !== null) {
+    if (clickedParagraph !== null) {
         clickedParagraph.element.style.setProperty('background', clickedParagraph.background);
         clickedParagraph = null;
     }
 }
 
 // Click listener to revert any highlighted paragraphs
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function (event) {
     removeParagraphHighlighting();
 });
 
 // Listen for context menu on paragraph
-document.addEventListener("contextmenu", function(event){
+document.addEventListener("contextmenu", function (event) {
     console.log("Context menu clicked");
     removeParagraphHighlighting();
     clickedElement = event.target;
 
     // Update clicked paragraph only if there is no highlighted text
-    if(isParagraphElement(clickedElement) && !window.getSelection().toString()) {
+    if (isParagraphElement(clickedElement) && !window.getSelection().toString()) {
         console.log("Clicked on paragraph");
         clickedParagraph = {
             element: clickedElement,
@@ -234,10 +235,12 @@ chrome.runtime.onMessage.addListener((msg, sender, responder) => {
     }
 });
 
-function displayMsgBox(text){
+function displayMsgBox(text) {
     let out = ""
     Promise.all(questions.map(item => askGPT(text, item.prompt))).then(results => {
-        return results.forEach((res, index) => { const pass = passOrNah(res); ; out = out.concat(makeGroup(pass, pass ? questions[index].yes : questions[index].no, res)) })
+
+        console.log("WEE", results)
+        return results.forEach((res, index) => { const pass = passOrNah(res);; out = out.concat(makeGroup(pass, pass ? questions[index].yes : questions[index].no, res)) })
     }).then(
         () => insertMsgBox(out)
     )
