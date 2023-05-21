@@ -6,7 +6,7 @@
   import DesktopMenu from "$lib/desktopMenu.svelte";
 </script>
 
-<div class="nav">
+<div class="nav" style="z-index:5">
   <DesktopMenu />
   <Navigation />
 </div>

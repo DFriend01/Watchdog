@@ -67,5 +67,6 @@
   }
   .body {
     font-size: small;
+    text-overflow: ellipsis;
   }
 </style>

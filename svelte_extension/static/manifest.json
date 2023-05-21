@@ -3,6 +3,9 @@
     "name": "WatchDog",
     "description": "Base Level Extension",
     "version": "1.0",
+    "icons": {
+        "48": "img/paw-icon.png"
+    },
     "background": {
         "service_worker": "background.js"
     },
