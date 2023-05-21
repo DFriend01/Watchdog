@@ -33,14 +33,31 @@
   --primary-950: #172554;
 
   --red-100: #fee2e2;
+  --red-300: #fca5a5;
+
   --orange-100: #ffedd5;
+  --orange-300: #fdba74;
+
   --yellow-100: #fef9c3;
+  --yellow-300: #fde047;
+
   --green-100: #ecfccb;
+  --green-300: #86efac;
+
   --violet-100: #ede9fe;
+  --violet-300: #c4b5fd;
+
   --purple-100: #f3e8ff;
+  --purple-300: #d8b4fe;
+
   --fuschia-100: #fae8ff;
+  --fuschia-300: #f0abfc;
+
   --pink-100: #fce7f3;
+  --pink-300: #f9a8d4;
+
   --teal-100: #ccfbf1;
+  --teal-300: #5eead4;
 
   --sp-2: 0.125rem;
   --sp-4: 0.25rem;
