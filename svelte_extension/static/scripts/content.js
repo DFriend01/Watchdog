@@ -1,5 +1,6 @@
 const apiRoute = "https://watchdog-iota.vercel.app/api/gpt/scam";
 const errorText = "Something went wrong serving your request.";
+const highlightColor = "#C4B5FE";
 var clickedParagraph = null;
 
 async function askGPT(text, prompt) {
@@ -18,6 +19,15 @@ function isParagraphElement(element) {
         return false;
     } else {
         return element.tagName.toLowerCase() === 'p';
+    }
+}
+
+function getPromptText(msg) {
+    // If there is highlighted text, that takes precedence over clicked paragraph
+    if (msg.content !== undefined) {
+        return msg.content;
+    } else {
+        return clickedParagraph.element.textContent;
     }
 }
 
@@ -123,16 +133,34 @@ const insertMsgBox = (message) => {
         box.style.setProperty("top", Math.min(window.innerHeight - rect.height + topOffset -100 , parseInt(box.style.getPropertyValue("top".replace("px", "")))) + 'px')
         box.style.setProperty("left", Math.min(window.innerWidth - rect.width - 100 , parseInt(box.style.getPropertyValue("left".replace("px", "")))) + 'px')
     }, 0);
-
 }
+
+function removeParagraphHighlighting() {
+    if(clickedParagraph !== null) {
+        clickedParagraph.element.style.setProperty('background', clickedParagraph.background);
+        clickedParagraph = null;
+    }
+}
+
+// Click listener to revert any highlighted paragraphs
+document.addEventListener("click", function(event) {
+    removeParagraphHighlighting();
+});
 
 // Listen for context menu on paragraph
 document.addEventListener("contextmenu", function(event){
     console.log("Context menu clicked");
+    removeParagraphHighlighting();
     clickedElement = event.target;
-    if(isParagraphElement(clickedElement)) {
+
+    // Update clicked paragraph only if there is no highlighted text
+    if(isParagraphElement(clickedElement) && !window.getSelection().toString()) {
         console.log("Clicked on paragraph");
-        clickedParagraph = clickedElement;
+        clickedParagraph = {
+            element: clickedElement,
+            background: window.getComputedStyle(clickedElement).getPropertyValue('background')
+        };
+        clickedParagraph.element.style.setProperty('background', highlightColor);
         console.log(clickedParagraph);
     } else {
         clickedParagraph = null;
@@ -141,9 +169,10 @@ document.addEventListener("contextmenu", function(event){
 
 chrome.runtime.onMessage.addListener((msg, sender, responder) => {
     if (msg.action === 'watchdogContextSelected') {
-        text = (msg.content === undefined) ? "" : msg.content;
+        text = getPromptText(msg);
+        console.log(text);
         displayMsgBox(text);
-        clickedParagraph = null;
+        removeParagraphHighlighting();
     }
 });
 
