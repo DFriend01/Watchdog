@@ -84,49 +84,49 @@
       <div>
         <img
           alt="svelte"
-          src="logos/svelte.svg"
+          src="logos/svelte.png"
         />
       </div>
       <div>
         <img
           alt="svelte"
-          src="logos/svelte.svg"
+          src="logos/svelte.png"
         />
       </div>
       <div>
         <img
           alt="svelte"
-          src="logos/svelte.svg"
+          src="logos/svelte.png"
         /></div
       >
       <div>
         <img
           alt="svelte"
-          src="logos/svelte.svg"
+          src="logos/svelte.png"
         /></div
       >
       <div>
         <img
           alt="svelte"
-          src="logos/svelte.svg"
+          src="logos/svelte.png"
         /></div
       >
       <div>
         <img
           alt="svelte"
-          src="logos/svelte.svg"
+          src="logos/svelte.png"
         /></div
       >
       <div>
         <img
           alt="svelte"
-          src="logos/svelte.svg"
+          src="logos/svelte.png"
         /></div
       >
       <div>
         <img
           alt="svelte"
-          src="logos/svelte.svg"
+          src="logos/svelte.png"
         /></div
       >
     </div>
@@ -257,7 +257,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--sp-24);
-    margin-bottom: var(--sp-64);
+    margin-bottom: var(--sp-40);
   }
 
   .hero-content > h2 {
@@ -282,19 +282,35 @@
   }
 
   .hero-image > .image-1 {
-    background-color: var(--pink-100);
+    background: linear-gradient(
+      180deg,
+      var(--pink-100) 0%,
+      var(--pink-300) 100%
+    );
   }
 
   .hero-image > .image-2 {
-    background-color: var(--violet-100);
+    background: linear-gradient(
+      180deg,
+      var(--violet-100) 0%,
+      var(--violet-300) 100%
+    );
   }
 
   .hero-image > .image-3 {
-    background-color: var(--teal-100);
+    background: linear-gradient(
+      180deg,
+      var(--teal-100) 0%,
+      var(--teal-300) 100%
+    );
   }
 
   .hero-image > .image-4 {
-    background-color: var(--purple-100);
+    background: linear-gradient(
+      180deg,
+      var(--purple-100) 0%,
+      var(--purple-300) 100%
+    );
   }
 
   .tech-stack-container {
@@ -316,9 +332,9 @@
     display: flex;
     color: var(--slate-600);
     border-radius: var(--sp-12);
-    width: calc((100% - var(--sp-16) - var(--sp-40) - var(--sp-40)) / 2);
+    width: calc(50% - var(--sp-16) - var(--sp-48));
     background-color: var(--white);
-    padding: 0 var(--sp-20);
+    padding: var(--sp-32) var(--sp-24);
   }
 
   .logo-cloud > div > img {
@@ -370,6 +386,7 @@
     background-color: var(--slate-900);
     color: var(--white);
   }
+
   .cta-1 > .overline-1 {
     color: var(--primary-500);
   }

@@ -21,7 +21,6 @@
 <style>
   .user-container {
     background-color: var(--primary-50);
-    border: 1px solid var(--primary-100);
     padding: var(--sp-20);
     display: flex;
     flex-direction: row;
