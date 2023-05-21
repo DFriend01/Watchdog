@@ -108,18 +108,20 @@
 
 <style>
   p.title {
+    padding-top: var(--sp-20);
     font-size: larger;
     font-weight: bold;
     color: var(--text-md);
   }
 
   .itemContainer {
+    padding-top: var(--sp-12);
     display: flex;
     flex-direction: column;
   }
 
   .item {
-    padding: var(--sp-12) 0;
+    padding: var(--sp-16) 0;
     border-bottom: var(--slate-300) 1px solid;
     width: calc(100% - var(--sp-20));
   }
@@ -153,11 +155,13 @@
 
   .container {
     position: fixed;
-    width: calc(100% - 2rem - var(--sp-20));
-    background-color: #fafafa;
+    width: calc(100% - 2rem - var(--sp-20) - var(--sp-8));
+    background-color: #fff;
     border-radius: var(--sp-16);
     padding-left: var(--sp-20);
-    padding-bottom: var(--sp-24);
+    padding-bottom: var(--sp-12);
+    padding-top: var(--sp-8);
+    padding-right: var(--sp-8);
     z-index: 10;
     right: 1rem;
     top: 1.5rem;
@@ -173,6 +177,7 @@
     width: var(--sp-48);
     height: var(--sp-48);
     cursor: pointer;
+    color: var(--text-xs);
   }
 
   .neutral-button {
