@@ -1,8 +1,11 @@
 <script>
+  import Navigation from "$lib/navigation.svelte";
   import FeatureDiv from "$lib/featureDiv.svelte";
   import UserDiv from "$lib/userDiv.svelte";
   import Footer from "$lib//footer.svelte";
 </script>
+
+<Navigation/>
 
 <div class="page-container">
   <!-- <div class="logo">
