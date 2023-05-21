@@ -69,4 +69,10 @@
     font-size: small;
     text-overflow: ellipsis;
   }
+
+  @media screen and (min-width: 1024px) {
+    .body {
+      font-size: var(--sp-16);
+    }
+  }
 </style>

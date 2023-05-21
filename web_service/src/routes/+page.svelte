@@ -6,7 +6,10 @@
   import DesktopMenu from "$lib/desktopMenu.svelte";
 </script>
 
-<div class="nav" style="z-index:5">
+<div
+  class="nav"
+  style="z-index:5"
+>
   <DesktopMenu />
   <Navigation />
 </div>
@@ -165,8 +168,11 @@
 
   <div class="cta">
     <div class="cta-1">
-      <p class="overline-1">Available today</p>
-      <h4>Download our Chrome extension and always be protected.</h4>
+      <p class="overline-1">Available now</p>
+      <h4
+        >Download our Chrome extension and protect yourself from fraudulent
+        behaviour</h4
+      >
       <a
       target="_blank"
         href="https://github.com/DFriend01/Watchdog/releases/tag/Release"
