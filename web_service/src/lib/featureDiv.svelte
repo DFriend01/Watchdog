@@ -15,7 +15,7 @@
     />
   </div>
   <h5>{featureHeading}</h5>
-  <p class="paragraph"><slot /></p>
+  <slot />
 </div>
 
 <style>
@@ -24,6 +24,10 @@
     color: var(--text-lg);
     border-radius: var(--sp-12);
     padding: var(--sp-20);
+  }
+
+  .paragraph {
+    text-overflow: ellipsis;
   }
 
   .feature-img {
