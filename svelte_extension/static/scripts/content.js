@@ -1,8 +1,9 @@
 const apiRoute = "https://watchdog-iota.vercel.app/api/gpt/scam";
 const errorText = "Something went wrong serving your request.";
+const highlightColor = "#C4B5FE";
+var clickedParagraph = null;
 
 async function askGPT(text, prompt) {
-
     const res = await fetch(apiRoute, {
         mode: 'cors',
         method: "POST",
@@ -11,6 +12,23 @@ async function askGPT(text, prompt) {
         })
     })
     return res.text()
+}
+
+function isParagraphElement(element) {
+    if (element === null || element === undefined || !('tagName' in element)) {
+        return false;
+    } else {
+        return element.tagName.toLowerCase() === 'p';
+    }
+}
+
+function getPromptText(msg) {
+    // If there is highlighted text, that takes precedence over clicked paragraph
+    if (msg.content !== undefined) {
+        return msg.content;
+    } else {
+        return clickedParagraph.element.textContent;
+    }
 }
 
 let x;
@@ -84,7 +102,6 @@ const insertMsgBox = (message) => {
         background: 
     `
 
-
     box.innerHTML =
         `
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -135,25 +152,51 @@ const insertMsgBox = (message) => {
         box.style.setProperty("top", Math.min(window.innerHeight - rect.height + topOffset - 100, parseInt(box.style.getPropertyValue("top".replace("px", "")))) + 'px')
         box.style.setProperty("left", Math.min(window.innerWidth - rect.width - 100, parseInt(box.style.getPropertyValue("left".replace("px", "")))) + 'px')
     }, 0);
-
 }
 
+function removeParagraphHighlighting() {
+    if(clickedParagraph !== null) {
+        clickedParagraph.element.style.setProperty('background', clickedParagraph.background);
+        clickedParagraph = null;
+    }
+}
 
+// Click listener to revert any highlighted paragraphs
+document.addEventListener("click", function(event) {
+    removeParagraphHighlighting();
+});
 
-chrome.runtime.onMessage.addListener((msg, sender, responder) => {
-    if (msg.action === 'watchdogContextSelected') {
-        text = (msg.content === undefined) ? "" : msg.content;
+// Listen for context menu on paragraph
+document.addEventListener("contextmenu", function(event){
+    console.log("Context menu clicked");
+    removeParagraphHighlighting();
+    clickedElement = event.target;
 
-        displayMsgBox(text)
+    // Update clicked paragraph only if there is no highlighted text
+    if(isParagraphElement(clickedElement) && !window.getSelection().toString()) {
+        console.log("Clicked on paragraph");
+        clickedParagraph = {
+            element: clickedElement,
+            background: window.getComputedStyle(clickedElement).getPropertyValue('background')
+        };
+        clickedParagraph.element.style.setProperty('background', highlightColor);
+        console.log(clickedParagraph);
+    } else {
+        clickedParagraph = null;
     }
 });
 
+chrome.runtime.onMessage.addListener((msg, sender, responder) => {
+    if (msg.action === 'watchdogContextSelected') {
+        text = getPromptText(msg);
+        console.log(text);
+        displayMsgBox(text);
+        removeParagraphHighlighting();
+    }
+});
 
-
-function displayMsgBox(text) {
+function displayMsgBox(text){
     let out = ""
-
-
     Promise.all(questions.map(item => askGPT(text, item.prompt))).then(results => {
         return results.forEach((res, index) => out = out.concat(`<h4>${questions[index].name}</h4><p>${res.trim()}</p>`))
     }).then(
