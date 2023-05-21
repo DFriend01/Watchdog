@@ -14,7 +14,7 @@ export async function POST({
     try {
         const res = await openai.createCompletion(
             {
-                model: "text-davinci-003",
+                model: "text-davinci-002",
                 prompt: prompt,
                 temperature: temp,
                 max_tokens: 1000,
@@ -22,7 +22,7 @@ export async function POST({
             }
         )
         //
-            const response =  new Response(res.data.choices[0].text +`(temp: ${temp}, model:${"text-davinci-002"}, prompt:${prompt})`);
+            const response =  new Response(res.data.choices[0].text );
             response.headers.append('Access-Control-Allow-Origin', "*")
             
         return response
