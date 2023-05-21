@@ -1,0 +1,60 @@
+<script>
+  export let targetLink = "";
+</script>
+
+<a
+  href={targetLink}
+  class="prompt-button"
+>
+  <div class="prompt-content">
+    <p class="overline-3">Try this prompt</p>
+    <p class="body"><slot /></p>
+  </div>
+  <div class="button-icon">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      class="w-5 h-5"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </div>
+</a>
+
+<style>
+  .prompt-button {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    background-color: var(--white);
+    padding: var(--sp-16) var(--sp-20);
+    border-radius: var(--sp-12);
+    border: 1px solid var(--slate-200);
+    gap: var(--sp-12);
+  }
+
+  .prompt-button:hover {
+    background-color: var(--slate-100);
+  }
+
+  .prompt-content > .overline-3 {
+    margin-bottom: var(--sp-8);
+  }
+
+  .button-icon {
+    width: var(--sp-32);
+    display: flex;
+  }
+
+  .button-icon > svg {
+    color: var(--text-sm);
+  }
+</style>

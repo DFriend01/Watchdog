@@ -1,3 +1,7 @@
+<script>
+  import PromptButton from "$lib/promptButton.svelte";
+</script>
+
 <div class="watchdog-container">
   <div class="watchdog-content-container">
     <h4>Watch out for suspicious stuff with Watchdog</h4>
@@ -7,29 +11,21 @@
     >
 
     <div class="prompts-container">
-      <a
-        href="#"
-        class="prompt-button"
+      <PromptButton
+        ><p class="paragraph"
+          >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!</p
+        ></PromptButton
       >
-        <div class="prompt-content">
-          <p class="overline-3">Try this prompt</p>
-          <p class="body">Example text here. If example is to…</p>
-        </div>
-        <div class="button-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            class="w-5 h-5"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </div>
-      </a>
+      <PromptButton
+        ><p class="paragraph"
+          >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!</p
+        ></PromptButton
+      >
+      <PromptButton
+        ><p class="paragraph"
+          >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!</p
+        ></PromptButton
+      >
     </div>
   </div>
 
@@ -94,10 +90,6 @@
     font-size: var(--sp-16);
   }
 
-  .button-icon > svg {
-    color: var(--text-sm);
-  }
-
   .input-container > button {
     width: var(--sp-56);
     height: auto;
@@ -105,7 +97,7 @@
     color: var(--white);
     background-color: var(--primary-600);
     border-radius: var(--sp-12);
-    padding: var(--sp-12);
+    padding: var(--sp-16);
     border: none;
   }
 
@@ -113,30 +105,11 @@
     background-color: var(--primary-700);
   }
 
-  .prompt-content > .overline-3 {
-    margin-bottom: var(--sp-8);
-  }
-
-  .prompt-button {
-    display: flex;
-    flex-direction: row;
-    text-decoration: none;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-    background-color: var(--white);
-    padding: var(--sp-16) var(--sp-20);
-    border-radius: var(--sp-12);
-    border: 1px solid var(--slate-200);
-  }
-
   .prompts-container {
     margin-top: var(--sp-20);
-  }
-
-  .button-icon {
     display: flex;
-    width: var(--sp-24);
+    flex-direction: column;
+    gap: var(--sp-12);
   }
 
   .overline-3 {
