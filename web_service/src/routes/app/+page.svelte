@@ -96,7 +96,6 @@
 
   async function askGPT(text: string, prompt: string) {
     let stuff = await fetch(apiRoute, {
-     
       method: "POST",
       body: JSON.stringify({
         prompt: prompt + text,
@@ -116,10 +115,19 @@
   }
 </script>
 
-<div class="watchdog-container" class:padBottom={keyBoardPadding && mobile}>
+<div
+  class="watchdog-container"
+  class:padBottom={keyBoardPadding && mobile}
+>
   <div class="watchdog-content-container">
     {#if loading}
-      <h4>Currently Loading...</h4>
+      <div class="loader">
+        <img
+          alt="ai-magic"
+          src="feature-puppo-4.svg"
+        />
+        <h4>Analysing text with AI magic…</h4>
+      </div>
     {/if}
 
     {#if results.length === 0 && !loading}
@@ -129,12 +137,21 @@
         from suspicious stuff online. Try it with the following prompts below.
       </p>
       <div class="prompts-container">
-        <PromptButton content="Prompt AAAAAAAA" on:click={()=>prompt='AAAAAAAAAAAAAA'}/>
+        <PromptButton
+          content="Prompt AAAAAAAA"
+          on:click={() => (prompt = "AAAAAAAAAAAAAA")}
+        />
         <div class="prompts-container">
-          <PromptButton content="Prompt BBBBB" on:click={()=>prompt='BBBBBBBBBBBBBBBBBB'}/>
+          <PromptButton
+            content="Prompt BBBBB"
+            on:click={() => (prompt = "BBBBBBBBBBBBBBBBBB")}
+          />
         </div>
         <div class="prompts-container">
-          <PromptButton content="Prompt CCCCCCCCC" on:click={()=>prompt='CCCCCCCCCCCCCCCCCCCCC'}/>
+          <PromptButton
+            content="Prompt CCCCCCCCC"
+            on:click={() => (prompt = "CCCCCCCCCCCCCCCCCCCCC")}
+          />
         </div>
       </div>
     {/if}
@@ -153,7 +170,10 @@
     {/each}
   </div>
 
-  <div class="input-container" class:moveUp={keyBoardPadding && mobile}>
+  <div
+    class="input-container"
+    class:moveUp={keyBoardPadding && mobile}
+  >
     <input
       bind:value={prompt}
       type="text"
@@ -186,19 +206,20 @@
   .watchdog-content-container {
     padding: var(--sp-20);
     padding-top: var(--sp-48);
+    background-image: url("hero-1.png");
+    background-size: cover;
+    height: calc(100% - var(--sp-48) - var(--sp-20));
+    background-repeat: no-repeat;
+    background-position: bottom;
   }
 
   .watchdog-container {
     background-color: #fafafa;
     min-height: 100vh;
+    height: 100vh;
   }
 
   .input-container {
-    background: linear-gradient(
-      180deg,
-      rgba(239, 246, 255, 0) 0%,
-      #eff6ff 100%
-    );
     display: flex;
     position: fixed;
     bottom: 0;
@@ -219,6 +240,10 @@
   *:focus {
     outline: none;
     border: 1px solid var(--slate-500);
+  }
+
+  .paragraph {
+    margin-bottom: var(--sp-40);
   }
 
   input {
@@ -242,7 +267,6 @@
   }
 
   .prompts-container {
-    margin-top: var(--sp-40);
     display: flex;
     flex-direction: column;
     gap: var(--sp-12);
@@ -254,5 +278,13 @@
 
   .body {
     color: var(--text-lg);
+  }
+
+  .loader {
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    text-align: center;
   }
 </style>
