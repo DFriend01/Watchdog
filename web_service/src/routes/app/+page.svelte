@@ -212,7 +212,10 @@
 >
   <div class="watchdog-content-container">
     {#if loading}
-      <div class="loader" in:fade>
+      <div
+        class="loader"
+        in:fade
+      >
         <img
           alt="ai-magic"
           src="feature-puppo-4.svg"
@@ -233,12 +236,14 @@
       <div class="prompts-container">
         <PromptButton
           content="Crypto Investment Scam"
-          on:click={() => (prompt = `Brooooo, I've made over 10,000 dollars in just one week since I started investing in NFTs! I think they are a very good investment option, but I'm only sharing this with you because I trust that you won't tell anyone else. If you are interested, I can give you some recommendations on what to invest in. Want to talk about it sometime tomorrow?`)}
+          on:click={() =>
+            (prompt = `Brooooo, I've made over 10,000 dollars in just one week since I started investing in NFTs! I think they are a very good investment option, but I'm only sharing this with you because I trust that you won't tell anyone else. If you are interested, I can give you some recommendations on what to invest in. Want to talk about it sometime tomorrow?`)}
         />
         <div class="prompts-container">
           <PromptButton
             content="Online shopping/Missed Package Scam"
-            on:click={() => (prompt = `Sorry, we seem to have misplaced your Amazon order.
+            on:click={() =>
+              (prompt = `Sorry, we seem to have misplaced your Amazon order.
 
               Don't worry, we're ready to help find it and get it back to you as soon as possible.
               
@@ -252,7 +257,8 @@
         <div class="prompts-container">
           <PromptButton
             content="Fake Job Offer Scam"
-            on:click={() => (prompt = `Hi Mary, I took a look at your LinkedIn profile and I think you have some relevant experience for a part-time role that my firm is hiring for. I realize that you might not have experience in finance, but would you be interested in making an extra 3k-4k on a flexible basis? You will only be require to work 7 hours a week.
+            on:click={() =>
+              (prompt = `Hi Mary, I took a look at your LinkedIn profile and I think you have some relevant experience for a part-time role that my firm is hiring for. I realize that you might not have experience in finance, but would you be interested in making an extra 3k-4k on a flexible basis? You will only be require to work 7 hours a week.
 
               Let me know if you are interested and we can set up a 30 minute Zoom call. I can present a PowerPoint presentation describing your role and what you would be doing.
               
@@ -336,7 +342,7 @@
     bottom: 0;
     padding: var(--sp-20);
     width: 100%;
-    gap: var(--sp-12);
+    gap: var(--sp-20);
   }
 
   .input-container > input {
@@ -397,5 +403,20 @@
     position: fixed;
     transform: translate(-50%, -50%);
     text-align: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    .watchdog-content-container {
+      padding: var(--sp-120);
+      height: calc(100% - var(--sp-120) * 2);
+    }
+
+    .input-container {
+      padding: var(--sp-40);
+    }
+
+    .input-container > input {
+      width: calc(100% - (var(--sp-40) * 2) - var(--sp-56) - var(--sp-40));
+    }
   }
 </style>
