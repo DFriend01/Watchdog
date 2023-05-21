@@ -78,7 +78,7 @@
         results = [];
         Promise.all(questions.map((item) => askGPT(text, item.prompt))).then(
             (res) => {
-                results = res.map((item) => item.trim());
+                results = res.map((item) => item.replace(/^[^\w]*/g, ""));
             }
         );
     }
