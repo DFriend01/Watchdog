@@ -2,7 +2,7 @@
     import Divider from "./Divider.svelte";
 
 
-    const apiRoute = "https://watch-dog.vercel.app/api/gpt/"
+    const apiRoute = "https://watchdog-iota.vercel.app/api/gpt/"
     let url: string;
 
     let text = ""
