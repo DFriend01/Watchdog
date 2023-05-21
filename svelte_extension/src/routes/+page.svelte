@@ -2,7 +2,7 @@
     import Divider from "./Divider.svelte";
 
 
-    const apiRoute = "https://watchdog-iota.vercel.app/api/gpt/"
+    const apiRoute = "https://watchdog-iota.vercel.app/api/gpt/scam"
     let url: string;
 
     let text = ""
@@ -13,7 +13,7 @@
     async function askGPT(){
         response = "Loading response"
 
-        fetch(apiRoute+"scam", {
+        fetch(apiRoute, {
     
             method:"POST",
             body: JSON.stringify({
