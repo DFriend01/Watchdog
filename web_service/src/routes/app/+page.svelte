@@ -321,7 +321,7 @@
   .watchdog-content-container {
     padding: var(--sp-20);
     padding-top: var(--sp-48);
-    background-image: url("/hero-1.png");
+    background-image: url("./hero-1.png");
     background-size: cover;
     height: calc(100% - var(--sp-48) - var(--sp-20));
     background-repeat: no-repeat;
