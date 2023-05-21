@@ -6,7 +6,7 @@
 
   import PromptButton from "$lib/promptButton.svelte";
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
   // import Device from 'svelte-device-info'
   let keyBoardPadding = false;
 
@@ -212,7 +212,7 @@
 >
   <div class="watchdog-content-container">
     {#if loading}
-      <div class="loader">
+      <div class="loader" in:fade>
         <img
           alt="ai-magic"
           src="feature-puppo-4.svg"
@@ -232,19 +232,32 @@
       </p>
       <div class="prompts-container">
         <PromptButton
-          content="Prompt AAAAAAAA"
-          on:click={() => (prompt = "AAAAAAAAAAAAAA")}
+          content="Crypto Investment Scam"
+          on:click={() => (prompt = `Brooooo, I've made over 10,000 dollars in just one week since I started investing in NFTs! I think they are a very good investment option, but I'm only sharing this with you because I trust that you won't tell anyone else. If you are interested, I can give you some recommendations on what to invest in. Want to talk about it sometime tomorrow?`)}
         />
         <div class="prompts-container">
           <PromptButton
-            content="Prompt BBBBB"
-            on:click={() => (prompt = "BBBBBBBBBBBBBBBBBB")}
+            content="Online shopping/Missed Package Scam"
+            on:click={() => (prompt = `Sorry, we seem to have misplaced your Amazon order.
+
+              Don't worry, we're ready to help find it and get it back to you as soon as possible.
+              
+              All we need is for you to click on the button and fill out your information so we can get your order back to you.
+              
+              We will also throw in an Amazon gift card, as an apology. Recover your Amazon order and receive your gift card here:
+              
+              Thank you for choosing Amazon and sorry for any inconvenience.`)}
           />
         </div>
         <div class="prompts-container">
           <PromptButton
-            content="Prompt CCCCCCCCC"
-            on:click={() => (prompt = "CCCCCCCCCCCCCCCCCCCCC")}
+            content="Fake Job Offer Scam"
+            on:click={() => (prompt = `Hi Mary, I took a look at your LinkedIn profile and I think you have some relevant experience for a part-time role that my firm is hiring for. I realize that you might not have experience in finance, but would you be interested in making an extra 3k-4k on a flexible basis? You will only be require to work 7 hours a week.
+
+              Let me know if you are interested and we can set up a 30 minute Zoom call. I can present a PowerPoint presentation describing your role and what you would be doing.
+              
+              Cheers,
+              John`)}
           />
         </div>
       </div>
