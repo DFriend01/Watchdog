@@ -15,6 +15,10 @@
 
   export let items: Item[] = [
     {
+      name: "Home",
+      dest: "",
+    },
+    {
       name: "About",
       dest: "",
     },
@@ -78,8 +82,16 @@
           class="close-button"
           on:click={() => (display = !display)}
         >
-          <div id="ver" />
-          <div id="hor" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="w-5 h-5"
+          >
+            <path
+              d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+            />
+          </svg>
         </div>
       </div>
 
@@ -96,20 +108,22 @@
 
 <style>
   p.title {
-    margin: 0.75rem 0.5rem;
-
+    padding-top: var(--sp-20);
     font-size: larger;
     font-weight: bold;
+    color: var(--text-md);
   }
 
   .itemContainer {
+    padding-top: var(--sp-12);
     display: flex;
     flex-direction: column;
   }
 
   .item {
-    padding: 0.6rem 0.5rem;
-    border-bottom: #cccccc 1px solid;
+    padding: var(--sp-16) 0;
+    border-bottom: var(--slate-300) 1px solid;
+    width: calc(100% - var(--sp-20));
   }
 
   .item:last-child {
@@ -118,7 +132,7 @@
 
   a {
     text-decoration: none;
-    color: #333333;
+    color: var(--text-lg);
     font-size: larger;
   }
 
@@ -141,12 +155,14 @@
 
   .container {
     position: fixed;
-    width: calc(100% - 5rem);
-    background-color: #fafafa;
-    border-radius: 15px;
-    padding: 1.5rem 1.5rem;
+    width: calc(100% - 2rem - var(--sp-20) - var(--sp-8));
+    background-color: #fff;
+    border-radius: var(--sp-16);
+    padding-left: var(--sp-20);
+    padding-bottom: var(--sp-12);
+    padding-top: var(--sp-8);
+    padding-right: var(--sp-8);
     z-index: 10;
-
     right: 1rem;
     top: 1.5rem;
   }
@@ -158,12 +174,10 @@
   }
 
   .close-button {
-    width: 2rem;
-    height: 2rem;
-    position: relative;
-    margin-right: 0.5rem;
-    transform: rotate(45deg);
+    width: var(--sp-48);
+    height: var(--sp-48);
     cursor: pointer;
+    color: var(--text-xs);
   }
 
   .neutral-button {
@@ -187,36 +201,16 @@
     height: auto;
   }
 
-  .logo {
-    width: var(--sp-48);
-    height: var(--sp-48);
-    top: var(--sp-20);
-    left: var(--sp-20);
-    position: absolute;
-    z-index: 0;
-  }
-
-  #hor {
-    position: absolute;
-    height: 4px;
-    width: 2rem;
-    background: gray;
-
-    transform: translate(0, calc(1rem - 2px));
-  }
-  #ver {
-    position: absolute;
-    width: 4px;
-    height: 2rem;
-    background: grey;
-
-    transform: translate(calc(1rem - 2px), 0);
-  }
-
   @media screen and (min-width: 768px) {
     .menu-button-mobile {
       top: var(--sp-40);
       right: var(--sp-40);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .menu-button-mobile {
+      display: none;
     }
   }
 </style>
