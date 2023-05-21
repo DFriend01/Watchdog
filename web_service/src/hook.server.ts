@@ -4,7 +4,7 @@ export const handle: Handle = async ({ resolve, event }) => {
     const response = await resolve(event);
 
     // Apply CORS header for API routes
-    if (event.url.pathname.startsWith('/api')) {
+    if (event.url.pathname.includes('/api')) {
         // Required for CORS to work
         if (event.request.method === 'OPTIONS') {
             return new Response(null, {
