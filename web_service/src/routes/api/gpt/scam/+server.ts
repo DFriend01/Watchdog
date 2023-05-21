@@ -22,7 +22,7 @@ export async function POST({
             }
         )
         //
-            const response =  new Response(res.data.choices[0].text);
+            const response =  new Response(res.data.choices[0].text +`(temp: ${temp}, model:${"text-davinci-003"}, prompt:${prompt})`);
             response.headers.append('Access-Control-Allow-Origin', "*")
             
         return response
