@@ -6,7 +6,7 @@ export async function askGPT(text){
         mode: 'cors',
         method:"POST",
         body: JSON.stringify({
-            prompt: "Check if there are anything scam related in the following text.\n\n" + text
+            prompt: "Detect if its possible the following text contains any attempt to scam. Start the response with \"Yes\" if so, or with \"No\" otherwise. Explain your reasoning.\n\n" + text
         })
     })
     .then(res => { 
