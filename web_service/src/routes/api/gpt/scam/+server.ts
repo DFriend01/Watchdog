@@ -10,7 +10,7 @@ export async function POST({
 }) {
     const json = (await request.json());
     const prompt = json.prompt
-    const temp = json.temp ? json.temp : 0.1
+    const temp = json.temp ? json.temp : 0.2
     try {
         const res = await openai.createCompletion(
             {

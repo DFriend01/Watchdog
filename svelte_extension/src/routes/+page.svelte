@@ -38,9 +38,8 @@
                 lines is truthful or not. Your answer should include the following:
 
                 1. A "Yes" or "No" statement indicating that the text is misinformation or not. If you cannot tell, then indicate this.
-                2. If you believe this text is a scam, consider it misinformation.
-                3. You should explain why you came to your conclusion, specifically referencing the originally provided text.
-                4. Your response should be no longer than 3 sentences.
+                2. You should explain why you came to your conclusion, specifically referencing the originally provided text.
+                3. Your response should be no longer than 3 sentences.
 
                 ---
 
