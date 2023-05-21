@@ -1,9 +1,8 @@
 const apiRoute = "https://watchdog-iota.vercel.app/api/gpt/scam";
 const errorText = "Something went wrong serving your request.";
+var clickedParagraph = null;
 
 async function askGPT(text){
-
-  
     const res =  await fetch(apiRoute, {
         mode: 'cors',
         method:"POST",
@@ -12,11 +11,15 @@ async function askGPT(text){
         })
     })
     return res.text()
-    
-    
 }
 
-
+function isParagraphElement(element) {
+    if (element === null || element === undefined || !('tagName' in element)) {
+        return false;
+    } else {
+        return element.tagName.toLowerCase() === 'p';
+    }
+}
 
 let x;
 let y;
@@ -32,7 +35,6 @@ const removeBox = () => {
         box.remove();
     }
 }
-
 
 document.addEventListener('mouseup', (event) => {
     if (!hovering) {
@@ -54,10 +56,7 @@ document.addEventListener('scroll', () => {
     }
 })
 
-
 const insertMsgBox = (message) => {
-
-
     let box = document.createElement("div")
     box.id = "MessageBox";
 
@@ -86,7 +85,6 @@ const insertMsgBox = (message) => {
     <p>${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
     `
 
-
     box.addEventListener('mouseenter', () => {
         hovering = true;
     })
@@ -102,15 +100,25 @@ const insertMsgBox = (message) => {
     document.body.insertAdjacentElement("afterend", box)
 }
 
-
+// Listen for context menu on paragraph
+document.addEventListener("contextmenu", function(event){
+    console.log("Context menu clicked");
+    clickedElement = event.target;
+    if(isParagraphElement(clickedElement)) {
+        console.log("Clicked on paragraph");
+        clickedParagraph = clickedElement;
+        console.log(clickedParagraph);
+    } else {
+        clickedParagraph = null;
+    }
+});
 
 chrome.runtime.onMessage.addListener((msg, sender, responder) => {
-    // console.log("Received message!", msg.action);
     if (msg.action === 'watchdogContextSelected') {
         text = (msg.content === undefined) ? "" : msg.content;
         askGPT(text).then(txt => {
             insertMsgBox(txt)
         });
+        clickedParagraph = null;
     }
 });
-
