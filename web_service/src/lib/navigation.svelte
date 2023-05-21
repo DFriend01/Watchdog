@@ -18,21 +18,18 @@
       name: "Home",
       dest: "",
     },
-    {
-      name: "About",
-      dest: "",
-    },
+
     {
       name: "DevPost",
-      dest: "",
+      dest: "https://devpost.com/",
     },
     {
       name: "GitHub",
-      dest: "",
+      dest: "https://github.com/DFriend01/Watchdog",
     },
     {
       name: "Watchdog",
-      dest: "",
+      dest: "app",
     },
   ];
 </script>
@@ -98,7 +95,7 @@
       <div class="itemContainer">
         {#each items as item}
           <div class="item">
-            <a href={item.dest}>{item.name}</a>
+            <a target="_blank" href={item.dest}>{item.name}</a>
           </div>
         {/each}
       </div>
