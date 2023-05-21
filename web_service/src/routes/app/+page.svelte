@@ -1,36 +1,61 @@
-<script>
-  import PromptButton from "$lib/promptButton.svelte";
+<script context="module">
 </script>
 
-<div class="watchdog-container">
+<script lang="ts">
+  import PromptButton from "$lib/promptButton.svelte";
+  import { onMount } from "svelte";
+  // import Device from 'svelte-device-info'
+  let keyBoardPadding = false;
+
+  function DeviceIsPhone() {
+    var ViewportWidth = window.innerWidth;
+    var ViewportHeight = window.innerHeight;
+    var smallerEdgeSize = Math.min(ViewportWidth, ViewportHeight);
+    var largerEdgeSize = Math.max(ViewportWidth, ViewportHeight);
+    return smallerEdgeSize <= 480 && largerEdgeSize <= 896;
+  }
+  let mobile: boolean = false;
+  $: {
+    console.log(mobile)
+  }
+  onMount(() => {
+    mobile = DeviceIsPhone();
+  });
+</script>
+
+<div class="watchdog-container" class:padBottom={keyBoardPadding && mobile}>
   <div class="watchdog-content-container">
     <h4>Watch out for suspicious stuff with Watchdog</h4>
-    <p class="paragraph"
-      >Watch out for scams and stuff with Watchdog, your AI-powered protector
-      from suspicious stuff online. Try it with the following prompts below.</p
-    >
+    <p class="paragraph">
+      Watch out for scams and stuff with Watchdog, your AI-powered protector
+      from suspicious stuff online. Try it with the following prompts below.
+    </p>
 
     <div class="prompts-container">
       <PromptButton
-        ><p class="paragraph"
-          >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!</p
-        ></PromptButton
+        ><p class="paragraph">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!
+        </p></PromptButton
       >
       <PromptButton
-        ><p class="paragraph"
-          >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!</p
-        ></PromptButton
+        ><p class="paragraph">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!
+        </p></PromptButton
       >
       <PromptButton
-        ><p class="paragraph"
-          >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!</p
-        ></PromptButton
+        ><p class="paragraph">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!
+        </p></PromptButton
       >
     </div>
   </div>
 
-  <div class="input-container">
-    <input placeholder="Enter prompt here…" />
+  <div class="input-container" class:moveUp={keyBoardPadding && mobile}>
+    <input
+      placeholder="Enter prompt here…"
+      on:focus={() => (keyBoardPadding = true)}
+      on:focusout={() => (keyBoardPadding = false)}
+    />
     <button>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +72,12 @@
 </div>
 
 <style>
+  .moveUp {
+    transform: translate(0, -40vh);
+  }
+  .padBottom {
+    padding-bottom: 40vh;
+  }
   .watchdog-content-container {
     padding: var(--sp-20);
     padding-top: var(--sp-48);

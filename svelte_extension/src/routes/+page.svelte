@@ -91,7 +91,6 @@
                 3. Your response should be no longer than 3 sentences.
 
                 ---
-
             `
             
             //prompt: "Detect if the following text contains false information. Explain your reasoning. Must start the response with yes or no. If neither, say N/A.\n\n",
@@ -141,7 +140,7 @@
         results = [];
         Promise.all(questions.map((item) => askGPT(text, item.prompt))).then(
             (res) => {
-                results = res.map((item) => item.trim());
+                results = res.map((item) => item.replace(/^([\s\.\,\-\_])*(?:\w)/g, ""));
             }
         );
     }
