@@ -222,7 +222,10 @@
     {/if}
 
     {#if results.length === 0 && !loading}
-      <h4>Watch out for suspicious stuff with Watchdog</h4>
+      <h4
+        >Watch out for suspicious stuff with <span class="blue">Watchdog</span
+        ></h4
+      >
       <p class="paragraph">
         Watch out for scams and stuff with Watchdog, your AI-powered protector
         from suspicious stuff online. Try it with the following prompts below.
@@ -308,6 +311,10 @@
     background-color: #fafafa;
     min-height: 100vh;
     height: 100vh;
+  }
+
+  .blue {
+    color: var(--primary-600);
   }
 
   .input-container {
