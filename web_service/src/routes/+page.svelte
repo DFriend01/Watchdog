@@ -5,64 +5,32 @@
   import Footer from "$lib//footer.svelte";
 </script>
 
-
-<div class='nav'>
-
-  <Navigation/>
-
+<div class="nav">
+  <Navigation />
 </div>
 
-
 <div class="page-container">
-  <!-- <div class="logo">
+  <div class="logo">
     <img
       alt="puppo!"
-      src="icons/fluent/dog_face_color.svg"
+      src="puppo-outlined.png"
     />
-  </div> -->
-
-  
+  </div>
 
   <div class="hero-container">
     <div class="hero-image">
-      <div class="image-1">
-        <img
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20professions/Man%20Technologist%20Medium-Light%20Skin%20Tone.png"
-          alt="Man Technologist Medium-Light Skin Tone"
-          width="100%"
-          height="auto"
-        />
-      </div>
-      <div class="image-2">
-        <img
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png"
-          alt="Sparkles"
-          width="100%"
-          height="auto"
-        />
-      </div>
-      <div class="image-3">
-        <img
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Locked%20with%20Key.png"
-          alt="Locked with Key"
-          width="100%"
-          height="auto"
-        />
-      </div>
-      <div class="image-4">
-        <img
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Dog.png"
-          alt="Dog"
-          width="100%"
-          height="auto"
-        />
-      </div>
+      <img
+        src="hero-puppo.svg"
+        alt="hero pup"
+      />
     </div>
     <div class="hero-content">
-      <h2>Lorem ipsum dolor sit amet</h2>
+      <p class="overline-1">Protector against fraudulent activity</p>
+      <h2>Watchdog watches out for you</h2>
       <p class="subtitle-2">
-        Watch out for scams and stuff with Watchdog, your AI-powered protector
-        from suspicious stuff online.</p
+        Stay vigilant against scams and deceptive material online with Watchdog,
+        your AI-powered guardian safeguarding you from online activities with
+        malicious intent.</p
       >
       <a
         href="../app/"
@@ -70,7 +38,7 @@
       >
     </div>
   </div>
-
+  <!-- 
   <div class="tech-stack-container">
     <p class="overline-3">Made for Stormhacks 2023</p>
     <h4>Leveraging the power of AI to make shit people will actually use.</h4>
@@ -124,63 +92,71 @@
         /></div
       >
     </div>
-  </div>
+  </div> -->
 
   <div class="features-container">
-    <h4>Lorem ipsum dolor sit amet.</h4>
+    <p1 class="overline-2">What can Watchdog do?</p1>
+    <h4>Browse the digital realm safely—Watchdog has your back.</h4>
+    <p class="paragraph"
+      >Watchdog provides users with increased confidence in navigating the
+      digital landscape, knowing that they have a reliable tool to assist them
+      in identifying and avoiding scams and misinformation.</p
+    >
 
     <div class="features-div">
       <FeatureDiv
-        featureTitle="Feature 1"
-        featureHeading="Heading feature 1"
-        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Mobile%20Phone.png"
-        >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus
-        accusantium beatae doloribus!</FeatureDiv
+        featureTitle="Misinformation Identification"
+        src="feature-puppo-1.svg"
+        >Watchdog analyzes information and flags misleading or false content,
+        helping users separate facts from misinformation.</FeatureDiv
       >
       <FeatureDiv
-        featureTitle="Feature 1"
-        featureHeading="Heading feature 1"
-        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Mobile%20Phone.png"
-        >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus
-        accusantium beatae doloribus!</FeatureDiv
+        featureTitle="Enhanced Online Safety"
+        src="feature-puppo-2.svg"
+        >By effectively identifying scams and misinformation, Watchdog helps
+        protect users from financial losses, identity theft, and other risks
+        associated with falling victim to scams.</FeatureDiv
       >
       <FeatureDiv
-        featureTitle="Feature 1"
-        featureHeading="Heading feature 1"
-        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Mobile%20Phone.png"
-        >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus
-        accusantium beatae doloribus!</FeatureDiv
-      >
+        featureTitle="User-Friendly Interface and Experience"
+        src="feature-puppo-3.svg"
+        >Watchdog offers an intuitive and easy-to-use experience, making it
+        accessible to users of all levels of technical expertise.
+      </FeatureDiv>
       <FeatureDiv
-        featureTitle="Feature 1"
-        featureHeading="Heading feature 1"
-        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Mobile%20Phone.png"
-        >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus
-        accusantium beatae doloribus!</FeatureDiv
+        featureTitle="Using AI Magic to Keep You Safe"
+        src="feature-puppo-4.svg"
+        >Watchdog employs the magic of machine learning, continuously improving
+        its detection capabilities by learning from new scams, evolving tactics,
+        and emerging forms of misinformation.</FeatureDiv
       >
     </div>
   </div>
 
   <div class="target-audience-container">
-    <h4>Who does this help?</h4>
+    <p1 class="overline-2">Who can use Watchdog?</p1>
+    <h4>Anyone can be the victim of a scam—but not on our watch.</h4>
+    <p class="paragraph"
+      >For individuals who wish to enhance their online safety, verify
+      information, and avoid falling victim to scams or misinformation, Watchdog
+      can be an invaluable tool.</p
+    >
+
     <div class="users-div">
-      <UserDiv
-        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Old%20Woman.png"
-        userHeading="User type 1"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias neque
-        nam corporis quo necessitatibus porro laudantium non?</UserDiv
+      <UserDiv userHeading="Parents and Guardians"
+        >Parents and guardians can use the app to protect their children from
+        scams and teach them critical thinking skills to identify misinformation
+        online.</UserDiv
       >
-      <UserDiv
-        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Old%20Woman.png"
-        userHeading="User type 1"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias neque
-        nam corporis quo necessitatibus porro laudantium non?</UserDiv
+      <UserDiv userHeading="News Readers"
+        >Those who regularly read news articles and online publications can
+        benefit from the app to verify the credibility of sources and detect any
+        misleading or inaccurate information.</UserDiv
       >
-      <UserDiv
-        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Old%20Woman.png"
-        userHeading="User type 1"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias neque
-        nam corporis quo necessitatibus porro laudantium non?</UserDiv
+      <UserDiv userHeading="Students and Researchers"
+        >Students, researchers, and academics can use the app to verify the
+        accuracy and reliability of sources and ensure the information they rely
+        on for their studies or work is trustworthy.</UserDiv
       >
     </div>
   </div>
@@ -214,7 +190,6 @@
 </div>
 
 <style>
-
   .nav {
     position: fixed;
 
@@ -222,20 +197,13 @@
     top: 3rem;
   }
 
-  .logo,
-  .menu-button-mobile {
-    position: fixed;
+  .logo {
+    width: var(--sp-48);
+    height: var(--sp-48);
     top: var(--sp-20);
-    right: var(--sp-20);
-    color: var(--slate-600);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .menu-button-mobile > svg {
-    width: var(--sp-32);
-    height: auto;
+    left: var(--sp-20);
+    position: absolute;
+    z-index: 0;
   }
 
   .logo > img {
@@ -248,12 +216,14 @@
   }
 
   .hero-container {
+    background-image: url("hero-1.png");
+    background-size: cover;
     padding: var(--sp-20);
-    margin-top: var(--sp-120);
+    padding-top: var(--sp-120);
     display: flex;
     flex-direction: column;
     gap: var(--sp-24);
-    margin-bottom: var(--sp-40);
+    padding-bottom: var(--sp-32);
   }
 
   .hero-content > h2 {
@@ -264,49 +234,9 @@
     margin-bottom: var(--sp-24);
   }
 
-  .hero-image {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: var(--sp-12);
-    grid-row-gap: var(--sp-12);
-  }
-
-  .hero-image > div {
-    border-radius: var(--sp-12);
-    padding: var(--sp-20);
-  }
-
-  .hero-image > .image-1 {
-    background: linear-gradient(
-      180deg,
-      var(--pink-100) 0%,
-      var(--pink-300) 100%
-    );
-  }
-
-  .hero-image > .image-2 {
-    background: linear-gradient(
-      180deg,
-      var(--violet-100) 0%,
-      var(--violet-300) 100%
-    );
-  }
-
-  .hero-image > .image-3 {
-    background: linear-gradient(
-      180deg,
-      var(--teal-100) 0%,
-      var(--teal-300) 100%
-    );
-  }
-
-  .hero-image > .image-4 {
-    background: linear-gradient(
-      180deg,
-      var(--purple-100) 0%,
-      var(--purple-300) 100%
-    );
+  .hero-image > img {
+    width: 100%;
+    height: auto;
   }
 
   .tech-stack-container {
@@ -338,9 +268,8 @@
   }
 
   .features-container {
-    background-color: var(--slate-900);
+    background-color: var(--primary-50);
     padding: var(--sp-32) var(--sp-20);
-    color: var(--white);
   }
 
   .features-container > h4 {
@@ -348,22 +277,20 @@
   }
 
   .features-div {
+    margin-top: var(--sp-24);
     display: flex;
     flex-direction: column;
     gap: var(--sp-20);
   }
 
   .target-audience-container {
+    background-color: var(--primary-50);
     padding: var(--sp-32) var(--sp-20);
-  }
-
-  .target-audience-container > h4,
-  .features-container > h4,
-  .tech-stack-container > h4 {
-    margin-bottom: var(--sp-24);
+    padding-bottom: var(--sp-40);
   }
 
   .users-div {
+    margin-top: var(--sp-32);
     display: flex;
     flex-direction: column;
     gap: var(--sp-16);
@@ -378,9 +305,14 @@
     align-items: center;
   }
 
+  .cta-1 > h4,
+  .cta-2 > h4 {
+    margin-bottom: var(--sp-32);
+  }
+
   .cta-1 {
-    background-color: var(--slate-900);
-    color: var(--white);
+    background-image: url("hero-1.png");
+    background-size: cover;
   }
 
   .cta-1 > .overline-1 {
@@ -390,5 +322,78 @@
   .cta-2 {
     background-color: var(--primary-600);
     color: white;
+  }
+
+  @media screen and (min-width: 768px) {
+    .logo {
+      top: var(--sp-40);
+      left: var(--sp-40);
+    }
+
+    .hero-container {
+      padding-top: var(--sp-120);
+      padding-left: var(--sp-40);
+      padding-right: var(--sp-40);
+    }
+
+    .features-container,
+    .target-audience-container,
+    .cta-1,
+    .cta-2 {
+      padding-left: var(--sp-40);
+      padding-right: var(--sp-40);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .logo {
+      top: var(--sp-40);
+      left: var(--sp-120);
+    }
+
+    .hero-container,
+    .features-container,
+    .target-audience-container {
+      padding-left: var(--sp-120);
+      padding-right: var(--sp-120);
+      padding-bottom: var(--sp-64);
+    }
+
+    .hero-container {
+      padding-top: var(--sp-160);
+      display: flex;
+      flex-direction: row-reverse;
+      gap: var(--sp-40);
+      align-items: center;
+    }
+
+    .hero-content {
+      width: 50%;
+    }
+
+    .features-div {
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: var(--sp-16);
+      grid-row-gap: var(--sp-16);
+    }
+
+    .cta {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .cta-1,
+    .cta-2 {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .users-div {
+      display: flex;
+      flex-direction: row;
+    }
   }
 </style>

@@ -78,6 +78,7 @@
   --sp-80: 5rem;
   --sp-96: 6rem;
   --sp-120: 7.5rem;
+  --sp-160: 10rem;
 }
 
 html,
@@ -175,7 +176,7 @@ h6 {
   font-weight: 600;
   font-size: var(--sp-14);
   line-height: 100%;
-  margin-bottom: var(--sp-8);
+  margin-bottom: var(--sp-12);
 }
 
 .overline-3 {
