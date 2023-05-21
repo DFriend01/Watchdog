@@ -1,8 +1,17 @@
 <script>
+  import Navigation from "$lib/navigation.svelte";
   import FeatureDiv from "$lib/featureDiv.svelte";
   import UserDiv from "$lib/userDiv.svelte";
   import Footer from "$lib//footer.svelte";
 </script>
+
+
+<div class='nav'>
+
+  <Navigation/>
+
+</div>
+
 
 <div class="page-container">
   <!-- <div class="logo">
@@ -12,22 +21,7 @@
     />
   </div> -->
 
-  <div class="neutral-button menu-button-mobile">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.75"
-      stroke="currentColor"
-      class="w-6 h-6"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-      />
-    </svg>
-  </div>
+  
 
   <div class="hero-container">
     <div class="hero-image">
@@ -220,13 +214,15 @@
 </div>
 
 <style>
-  .logo,
-  .menu-button-mobile {
-    width: var(--sp-48);
-    aspect-ratio: 1 / 1;
-    height: auto;
+
+  .nav {
+    position: fixed;
+
+    right: 3rem;
+    top: 3rem;
   }
 
+  .logo,
   .menu-button-mobile {
     position: fixed;
     top: var(--sp-20);
