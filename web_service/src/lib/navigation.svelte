@@ -167,6 +167,7 @@
         background: gray;
 
         transform: translate(0, calc(1rem - 2px));
+        border-radius: 2px;
     }
     #ver {
         position: absolute;
@@ -175,5 +176,7 @@
         background: grey;
 
         transform: translate(calc(1rem - 2px), 0);
+
+        border-radius: 2px;
     }
 </style>
