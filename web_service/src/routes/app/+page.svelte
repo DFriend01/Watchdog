@@ -6,7 +6,7 @@
 
   import PromptButton from "$lib/promptButton.svelte";
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
   // import Device from 'svelte-device-info'
   let keyBoardPadding = false;
 
@@ -45,12 +45,12 @@
   }
 
   const questions = [
-        {
-            yes: "This Content could be a scam. ",
-            no: "This content is most likely not a scam.",
-            
-            // Source: https://www.aura.com/learn/social-media-scams
-            prompt: `
+    {
+      yes: "This Content could be a scam. ",
+      no: "This content is most likely not a scam.",
+
+      // Source: https://www.aura.com/learn/social-media-scams
+      prompt: `
                 You are an AI assistant who helps consumers identify if text content could be scam. I will provide some warning signs of scams to 
                 look out for when you are evaluating your results.
 
@@ -109,12 +109,12 @@
 
                 ---
 
-            `
-        },
-        {
-            yes: "This content could contain misinformation.",
-            no: "This content appears to be truthful.",
-            prompt: `
+            `,
+    },
+    {
+      yes: "This content could contain misinformation.",
+      no: "This content appears to be truthful.",
+      prompt: `
                 You are an AI assistant that helps consumers identify misinformation on the internet. I will provide you with some warning signs of
                 misinformation to look out for when you are evaluating your results.
 
@@ -148,12 +148,12 @@
 
                 ---
 
-            `
-        },
-        {
-            yes: "This content could be Ai generated.",
-            no: "This content is probably not Ai generated",
-            prompt: `
+            `,
+    },
+    {
+      yes: "This content could be Ai generated.",
+      no: "This content is probably not Ai generated",
+      prompt: `
                 You are an AI assistant that helps people identify AI generated text. I will provide some warning signs of AI generated text to look out for
                 when determining if the provided text is AI generated or not.
 
@@ -181,13 +181,12 @@
 
                 ---
 
-                `
-        },
-    ];
+                `,
+    },
+  ];
 
   async function askGPT(text: string, prompt: string) {
     let stuff = await fetch(apiRoute, {
-     
       method: "POST",
       body: JSON.stringify({
         prompt: prompt + text,
@@ -210,22 +209,53 @@
 <div class="watchdog-container" class:padBottom={keyBoardPadding && mobile}>
   <div class="watchdog-content-container">
     {#if loading}
-      <h4>Currently Loading...</h4>
+      <div class="loader" in:fade>
+        <img alt="ai-magic" src="feature-puppo-4.svg" />
+        <h4>Analysing text with AI magic…</h4>
+      </div>
     {/if}
 
     {#if results.length === 0 && !loading}
-      <h4>Watch out for suspicious stuff with Watchdog</h4>
+      <h4
+        >Watch out for suspicious stuff with <span class="blue">Watchdog</span
+        ></h4
+      >
       <p class="paragraph">
         Watch out for scams and stuff with Watchdog, your AI-powered protector
         from suspicious stuff online. Try it with the following prompts below.
       </p>
       <div class="prompts-container">
-        <PromptButton content="Prompt AAAAAAAA" on:click={()=>prompt='AAAAAAAAAAAAAA'}/>
+        <PromptButton
+          content="Crypto Investment Scam"
+          on:click={() =>
+            (prompt = `Brooooo, I've made over 10,000 dollars in just one week since I started investing in NFTs! I think they are a very good investment option, but I'm only sharing this with you because I trust that you won't tell anyone else. If you are interested, I can give you some recommendations on what to invest in. Want to talk about it sometime tomorrow?`)}
+        />
         <div class="prompts-container">
-          <PromptButton content="Prompt BBBBB" on:click={()=>prompt='BBBBBBBBBBBBBBBBBB'}/>
+          <PromptButton
+            content="Online shopping/Missed Package Scam"
+            on:click={() =>
+              (prompt = `Sorry, we seem to have misplaced your Amazon order.
+
+              Don't worry, we're ready to help find it and get it back to you as soon as possible.
+              
+              All we need is for you to click on the button and fill out your information so we can get your order back to you.
+              
+              We will also throw in an Amazon gift card, as an apology. Recover your Amazon order and receive your gift card here:
+              
+              Thank you for choosing Amazon and sorry for any inconvenience.`)}
+          />
         </div>
         <div class="prompts-container">
-          <PromptButton content="Prompt CCCCCCCCC" on:click={()=>prompt='CCCCCCCCCCCCCCCCCCCCC'}/>
+          <PromptButton
+            content="Fake Job Offer Scam"
+            on:click={() =>
+              (prompt = `Hi Mary, I took a look at your LinkedIn profile and I think you have some relevant experience for a part-time role that my firm is hiring for. I realize that you might not have experience in finance, but would you be interested in making an extra 3k-4k on a flexible basis? You will only be require to work 7 hours a week.
+
+              Let me know if you are interested and we can set up a 30 minute Zoom call. I can present a PowerPoint presentation describing your role and what you would be doing.
+              
+              Cheers,
+              John`)}
+          />
         </div>
       </div>
     {/if}
@@ -233,15 +263,18 @@
     {#if results.length > 0}
       <p style="font-weight:bold; margin-top:auto;">Results</p>
     {/if}
-    {#each [...Array(results.length).keys()] as i}
-      <div in:fly={{ duration: 200, x: -25, delay: 100 * i }}>
-        <ContentDrop
-          yes={questions[i].yes}
-          no={questions[i].no}
-          content={results[i]}
-        />
-      </div>
-    {/each}
+
+    <div class="contents">
+      {#each [...Array(results.length).keys()] as i}
+        <div in:fly={{ duration: 200, x: -25, delay: 100 * i }}>
+          <ContentDrop
+            yes={questions[i].yes}
+            no={questions[i].no}
+            content={results[i]}
+          />
+        </div>
+      {/each}
+    </div>
   </div>
 
   <div class="input-container" class:moveUp={keyBoardPadding && mobile}>
@@ -268,6 +301,17 @@
 </div>
 
 <style>
+
+  .contents {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+  
+  }
+  .contents > * {
+    flex: 1;
+    flex-basis: 300px;
+  }
   .moveUp {
     transform: translate(0, -30vh);
   }
@@ -277,25 +321,30 @@
   .watchdog-content-container {
     padding: var(--sp-20);
     padding-top: var(--sp-48);
+    background-image: url("hero-1.png");
+    background-size: cover;
+    height: calc(100% - var(--sp-48) - var(--sp-20));
+    background-repeat: no-repeat;
+    background-position: bottom;
   }
 
   .watchdog-container {
     background-color: #fafafa;
     min-height: 100vh;
+    height: 100vh;
+  }
+
+  .blue {
+    color: var(--primary-600);
   }
 
   .input-container {
-    background: linear-gradient(
-      180deg,
-      rgba(239, 246, 255, 0) 0%,
-      #eff6ff 100%
-    );
     display: flex;
     position: fixed;
     bottom: 0;
     padding: var(--sp-20);
     width: 100%;
-    gap: var(--sp-12);
+    gap: var(--sp-20);
   }
 
   .input-container > input {
@@ -310,6 +359,10 @@
   *:focus {
     outline: none;
     border: 1px solid var(--slate-500);
+  }
+
+  .paragraph {
+    margin-bottom: var(--sp-40);
   }
 
   input {
@@ -333,7 +386,6 @@
   }
 
   .prompts-container {
-    margin-top: var(--sp-40);
     display: flex;
     flex-direction: column;
     gap: var(--sp-12);
@@ -345,5 +397,28 @@
 
   .body {
     color: var(--text-lg);
+  }
+
+  .loader {
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    .watchdog-content-container {
+      padding: var(--sp-120);
+      height: calc(100% - var(--sp-120) * 2);
+    }
+
+    .input-container {
+      padding: var(--sp-40);
+    }
+
+    .input-container > input {
+      width: calc(100% - (var(--sp-40) * 2) - var(--sp-56) - var(--sp-40));
+    }
   }
 </style>

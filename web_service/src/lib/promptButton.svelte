@@ -1,13 +1,11 @@
 <script>
- 
   export let content = "";
 </script>
 
 <div
-on:click
+  on:click
   class="prompt-button"
 >
-
   <div class="prompt-content">
     <p class="overline-3">Try this prompt</p>
     <p class="body">{content}</p>
@@ -69,5 +67,12 @@ on:click
   }
   .body {
     font-size: small;
+    text-overflow: ellipsis;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .body {
+      font-size: var(--sp-16);
+    }
   }
 </style>
