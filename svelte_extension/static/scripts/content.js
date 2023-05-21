@@ -90,8 +90,7 @@ const insertMsgBox = (message) => {
     box.id = "MessageBox";
 
     box.style.cssText = `
-        all:initial;
-
+    
         width: 400px;
 
         border: 2px solid #2563eb;

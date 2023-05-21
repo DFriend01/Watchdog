@@ -21,8 +21,8 @@ export async function POST({
                 best_of: 1,
             }
         )
-        //res.data.choices[0].text
-            const response =  new Response(prompt);
+        //
+            const response =  new Response(res.data.choices[0].text);
             response.headers.append('Access-Control-Allow-Origin', "*")
             
         return response
