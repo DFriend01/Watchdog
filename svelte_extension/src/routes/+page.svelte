@@ -81,20 +81,28 @@
     <h3>Watchdog</h3>
 
     <label for="textArea">Enter suspicious text here:</label>
-    <textarea
-        id="textArea"
-        placeholder="Type something here..."
-        rows="5"
-        cols="57"
-        bind:value={text}
-    />
+
+    <div style="position:relative;">
+
+        <textarea
+            id="textArea"
+            placeholder="Type something here..."
+            rows="5"
+            cols="57"
+            bind:value={text}
+        />
+        <img alt="dog" src="https://watchdog-iota.vercel.app/puppo-1.png"/>
+    </div>
 
     <button on:click={checkQuestions}>Analyse text</button>
 
-    <p style="font-weight:bold;">Results</p>
+    
 
     {#if loading}
         <span>Loading...</span>
+    {/if}
+    {#if results.length > 0}
+        <p style="font-weight:bold;">Results</p>
     {/if}
     {#each [...Array(results.length).keys()] as i}
         <div in:fly={{ duration: 200, x: -25, delay: 100 * i }}>
@@ -133,6 +141,8 @@
         border-radius: 10px;
         border-color: var(--slate-300);
         padding: 1rem;
+        position: relative;
+        z-index: 3;
     }
 
     button {
@@ -146,9 +156,22 @@
         align-self: flex-end;
 
         transition: background ease-out 0.3s;
+        margin-right: 0;
     }
 
     button:hover {
         background-color: var(--primary-700);
+    }
+
+
+    img {
+        position: absolute;
+        width:5rem;
+        height: auto;
+        top: 0;
+        right: 2rem;
+        z-index: 1;
+
+        transform: translate(0, calc(0.3rem - 100%))
     }
 </style>
