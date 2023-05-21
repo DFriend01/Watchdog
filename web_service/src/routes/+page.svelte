@@ -226,7 +226,7 @@
   }
 
   .hero-container {
-    background-image: url("hero-1.png");
+    background-image: url("/hero-1.png");
     background-size: cover;
     padding: var(--sp-20);
     padding-top: var(--sp-120);
@@ -321,7 +321,7 @@
   }
 
   .cta-1 {
-    background-image: url("hero-1.png");
+    background-image: url("/hero-1.png");
     background-size: cover;
   }
 
