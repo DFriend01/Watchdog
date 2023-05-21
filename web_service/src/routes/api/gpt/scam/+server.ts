@@ -18,7 +18,7 @@ export async function POST({
                 prompt: prompt,
                 temperature: temp,
                 max_tokens: 1000,
-                best_of: 1
+                best_of: 1,
             }
         )
             const response =  new Response(res.data.choices[0].text);

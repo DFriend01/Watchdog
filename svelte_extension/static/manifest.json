@@ -8,17 +8,24 @@
     },
     "content_scripts": [
         {
-          "matches": ["<all_urls>"],
-          "js": ["scripts/content.js"]
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "scripts/content.js"
+            ]
         }
     ],
     "permissions": [
         "contextMenus",
         "tabs"
-    ],  
+    ],
     "action": {
         "name": "WatchDog",
         "default_title": "WatchDog",
         "default_popup": "index.html"
-    }
+    },
+    "host_permissions": [
+        "https://*/"
+    ]
 }

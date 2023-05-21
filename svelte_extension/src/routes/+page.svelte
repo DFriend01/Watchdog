@@ -2,7 +2,7 @@
     import Divider from "./Divider.svelte";
 
 
-    const apiRoute = "https://watchdog-iota.vercel.app/api/gpt/scam"
+    const apiRoute = "http://localhost:5173/api/gpt/scam"
     let url: string;
 
     let text = ""
@@ -11,10 +11,12 @@
 
 
     async function askGPT(){
-        response = "Loading response"
-
+    //     response = "Loading response"
+    //     fetch('https://jsonplaceholder.typicode.com/todos/1')
+    //   .then(response => response.json())
+    //   .then(json =>  response = json)
         fetch(apiRoute, {
-    
+            mode: 'cors',
             method:"POST",
             body: JSON.stringify({
                 prompt: "Check if there are anything scam related in the following text." + text
@@ -30,7 +32,7 @@
     <h1>
         Watch_Dog 
     </h1>
-    <p>Enter your scam here</p>
+    <p>Enter your scam here??</p>
     <textarea placeholder="woof woof"  bind:value={text}/>
     <button on:click={askGPT}>GO</button>
 

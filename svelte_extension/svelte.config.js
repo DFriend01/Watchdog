@@ -14,11 +14,14 @@ const config = {
 				assets: "build",
 				fallback:null,
 				precompress:false,
-				manifest: "manifest.json"
+				manifest: "manifest.json",
+			
 			}
 		),
 		appDir: 'app',
-	
+	csrf:{
+		checkOrigin:false
+	}
 	}
 };
 
