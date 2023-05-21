@@ -39,6 +39,7 @@
     border-radius: var(--sp-12);
     border: 1px solid var(--slate-200);
     gap: var(--sp-12);
+    padding-right: var(--sp-16);
   }
 
   .prompt-button:hover {
@@ -50,7 +51,7 @@
   }
 
   .button-icon {
-    width: var(--sp-32);
+    width: var(--sp-24);
     display: flex;
   }
 
