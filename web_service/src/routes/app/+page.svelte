@@ -206,17 +206,11 @@
   }
 </script>
 
-<div
-  class="watchdog-container"
-  class:padBottom={keyBoardPadding && mobile}
->
+<div class="watchdog-container" class:padBottom={keyBoardPadding && mobile}>
   <div class="watchdog-content-container">
     {#if loading}
       <div class="loader" in:fade>
-        <img
-          alt="ai-magic"
-          src="feature-puppo-4.svg"
-        />
+        <img alt="ai-magic" src="feature-puppo-4.svg" />
         <h4>Analysing text with AI magic…</h4>
       </div>
     {/if}
@@ -230,12 +224,14 @@
       <div class="prompts-container">
         <PromptButton
           content="Crypto Investment Scam"
-          on:click={() => (prompt = `Brooooo, I've made over 10,000 dollars in just one week since I started investing in NFTs! I think they are a very good investment option, but I'm only sharing this with you because I trust that you won't tell anyone else. If you are interested, I can give you some recommendations on what to invest in. Want to talk about it sometime tomorrow?`)}
+          on:click={() =>
+            (prompt = `Brooooo, I've made over 10,000 dollars in just one week since I started investing in NFTs! I think they are a very good investment option, but I'm only sharing this with you because I trust that you won't tell anyone else. If you are interested, I can give you some recommendations on what to invest in. Want to talk about it sometime tomorrow?`)}
         />
         <div class="prompts-container">
           <PromptButton
             content="Online shopping/Missed Package Scam"
-            on:click={() => (prompt = `Sorry, we seem to have misplaced your Amazon order.
+            on:click={() =>
+              (prompt = `Sorry, we seem to have misplaced your Amazon order.
 
               Don't worry, we're ready to help find it and get it back to you as soon as possible.
               
@@ -249,7 +245,8 @@
         <div class="prompts-container">
           <PromptButton
             content="Fake Job Offer Scam"
-            on:click={() => (prompt = `Hi Mary, I took a look at your LinkedIn profile and I think you have some relevant experience for a part-time role that my firm is hiring for. I realize that you might not have experience in finance, but would you be interested in making an extra 3k-4k on a flexible basis? You will only be require to work 7 hours a week.
+            on:click={() =>
+              (prompt = `Hi Mary, I took a look at your LinkedIn profile and I think you have some relevant experience for a part-time role that my firm is hiring for. I realize that you might not have experience in finance, but would you be interested in making an extra 3k-4k on a flexible basis? You will only be require to work 7 hours a week.
 
               Let me know if you are interested and we can set up a 30 minute Zoom call. I can present a PowerPoint presentation describing your role and what you would be doing.
               
@@ -263,21 +260,21 @@
     {#if results.length > 0}
       <p style="font-weight:bold; margin-top:auto;">Results</p>
     {/if}
-    {#each [...Array(results.length).keys()] as i}
-      <div in:fly={{ duration: 200, x: -25, delay: 100 * i }}>
-        <ContentDrop
-          yes={questions[i].yes}
-          no={questions[i].no}
-          content={results[i]}
-        />
-      </div>
-    {/each}
+
+    <div class="contents">
+      {#each [...Array(results.length).keys()] as i}
+        <div in:fly={{ duration: 200, x: -25, delay: 100 * i }}>
+          <ContentDrop
+            yes={questions[i].yes}
+            no={questions[i].no}
+            content={results[i]}
+          />
+        </div>
+      {/each}
+    </div>
   </div>
 
-  <div
-    class="input-container"
-    class:moveUp={keyBoardPadding && mobile}
-  >
+  <div class="input-container" class:moveUp={keyBoardPadding && mobile}>
     <input
       bind:value={prompt}
       type="text"
@@ -301,6 +298,17 @@
 </div>
 
 <style>
+
+  .contents {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+  
+  }
+  .contents > * {
+    flex: 1;
+    flex-basis: 300px;
+  }
   .moveUp {
     transform: translate(0, -30vh);
   }

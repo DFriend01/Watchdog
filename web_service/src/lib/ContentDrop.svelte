@@ -6,66 +6,52 @@
 
     let isYes = content.trim().toLocaleLowerCase().startsWith("yes");
 
-    let show = false;
+    let show = true;
 </script>
 
-
-
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="dropRoot" on:click={() => (show = !show)}>
-    <img
-        alt="checkmark"
-        src={`icons/${
-            !isYes ? "check.svg" : "cross.svg"
-        }`}
-    />
+<div class="displayRoot" transition:fly={{ duration: 200, y: -35 }}>
+    <div class="dropRoot">
+        <img
+            alt="checkmark"
+            src={`icons/${!isYes ? "check.svg" : "cross.svg"}`}
+        />
 
-    <p>
-        {#if isYes}
-            {yes}
-        {:else}
-            {no}
-        {/if}
-    </p>
+        <p>
+            {#if isYes}
+                {yes}
+            {:else}
+                {no}
+            {/if}
+        </p>
 
-    <div class="arrow" class:down={show}>
+        <!-- <div class="arrow" class:down={show}>
         <div class="line1" />
         <div class="line2" />
+    </div> -->
     </div>
-    
-</div>
 
-{#if show}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="displayRoot" transition:fly={{duration:200, y:-35 }}>
-        <p>
-            {content}
-        </p>
-    </div>
-{/if}
+
+    <p>
+        {content}
+    </p>
+</div>
 
 <style>
     .displayRoot {
-
-
-        width: auto;
+        width: fit-content;
         height: auto;
 
         max-height: 500px;
-      
-     
     }
 
-    .down{
-        transform: rotate(45deg) !important;;
-    }
+
 
     .displayRoot > p {
         margin: 1rem;
-        font-size: larger!important;
+        font-size: larger !important;
     }
-
-   
 
     .dropRoot {
         display: flex;
@@ -107,7 +93,7 @@
         margin-left: auto;
         margin-right: 0.5rem;
 
-        transition:transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
     }
 
     .line1 {

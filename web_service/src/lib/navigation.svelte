@@ -21,7 +21,7 @@
 
     {
       name: "DevPost",
-      dest: "https://devpost.com/",
+      dest: "https://devpost.com/software/547120",
     },
     {
       name: "GitHub",
@@ -31,6 +31,10 @@
       name: "Watchdog",
       dest: "app",
     },
+    {
+        name:"Extension",
+        dest: "https://github.com/DFriend01/Watchdog/releases/tag/Release"
+    }
   ];
 </script>
 

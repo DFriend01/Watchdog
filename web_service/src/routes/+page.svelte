@@ -166,9 +166,10 @@
   <div class="cta">
     <div class="cta-1">
       <p class="overline-1">Available today</p>
-      <h4>Download our Chrome extension and lorem ipsum dolor</h4>
+      <h4>Download our Chrome extension and always be protected.</h4>
       <a
-        href="#"
+      target="_blank"
+        href="https://github.com/DFriend01/Watchdog/releases/tag/Release"
         class="primary-button-lg button-text"
       >
         Try Watchdog today
@@ -180,7 +181,8 @@
         >Try Watchdog from your own browser, whether you’re on mobile or desktop</h4
       >
       <a
-        href="#"
+      target="_blank"
+        href="app"
         class="secondary-button-lg button-text"
       >
         Try Watchdog today
