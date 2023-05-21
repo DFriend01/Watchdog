@@ -113,8 +113,8 @@ const insertMsgBox = (message) => {
     setTimeout(() => {
         const rect = box.getBoundingClientRect();
         console.log('top', Math.min(window.innerHeight - rect.height, parseInt(box.style.getPropertyValue("top".replace("px", "")))), 'leftl', Math.min(window.innerWidth - rect.width, parseInt(box.style.getPropertyValue("left".replace("px", "")))))
-        box.style.setProperty("top", Math.min(window.innerHeight - rect.height + topOffset -100 , parseInt(box.style.getPropertyValue("top".replace("px", "")))) + 'px')
-        box.style.setProperty("left", Math.min(window.innerWidth - rect.width - 100 , parseInt(box.style.getPropertyValue("left".replace("px", "")))) + 'px')
+        box.style.setProperty("top", Math.min(window.innerHeight - rect.height + topOffset - 100, parseInt(box.style.getPropertyValue("top".replace("px", "")))) + 'px')
+        box.style.setProperty("left", Math.min(window.innerWidth - rect.width - 100, parseInt(box.style.getPropertyValue("left".replace("px", "")))) + 'px')
     }, 0);
 
 }
@@ -131,7 +131,7 @@ chrome.runtime.onMessage.addListener((msg, sender, responder) => {
 
 
 
-function displayMsgBox(text){
+function displayMsgBox(text) {
     let out = ""
 
 
