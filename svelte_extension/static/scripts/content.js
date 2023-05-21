@@ -18,6 +18,8 @@ let y;
 let topOffset;
 let hovering = false;
 
+
+
 let questions = [
     {
         name: "Is the content a scam?",
@@ -78,18 +80,35 @@ const insertMsgBox = (message) => {
         z-index:999;
 
         transition: left top 0.2s ease-out;
+
+        background: 
     `
 
 
     box.innerHTML =
         `
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        #MessageBox > p {
-            font-family: 'Trebuchet MS', sans-serif;
+        h1 {
+            margin: 0;
+            margin-top:0.25rem;
+            margin-bottom:2rem;
+        }
+
+        #MessageBox {
+            font-family: 'Manrope', sans-serif;
             margin: 10px 10px 10px 10px;
             line-height: 1.25rem;
         }
+
     </style>
+
+    <span>Watch out for suspicious stuff with</span>
+    <h1>Watchdog</h1>
+    
     <p>${message}</p>
     `
 
