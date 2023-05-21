@@ -42,17 +42,17 @@ let questions = [
     {
         yes: "This Content could be a scam. ",
         no: "This content is most likely not a scam.",
-        prompt: "Detect if its possible the following text contains any attempt to scam. Start the response with \"Yes\" if so, or with \"No\" otherwise. Explain your reasoning.\n\n"
+        prompt: "Detect if its possible the following text contains any attempt to scam. Explain your reasoning. Must start the response with Yes if so, or with No otherwise. Respond with N/A if neither.\n\n"
     },
     {
-        yes: "This content appears to be truthful.",
-        no: "This content could contain misinformation.",
-        prompt: "Detect if the following text is truthful? Explain why. Start with response with yes or no."
+        yes: "This content could contain misinformation.",
+        no: "This content appears to be truthful.",
+        prompt: "Detect if the following text is truthful. Explain your reasoning. Must start the response with yes or no. If neither, say N/A."
     },
     {
         yes: "This content could be Ai generated.",
         no: "This content is probably not Ai generated",
-        prompt: "Detect if the following text is Ai generated? Explain why. Start with response with yes or no."
+        prompt: "Detect if the following text is Ai generated? Explain your reasonings. Must start the response with yes or no. If neither, say N/A."
     }
 ]
 
