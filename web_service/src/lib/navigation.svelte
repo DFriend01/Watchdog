@@ -129,16 +129,16 @@
     }
 
     .container {
-        position: absolute;
-        width: 300px;
+        position: fixed;
+        width: calc(100% - 5rem);
         background-color: #fafafa;
         border-radius: 15px;
         padding: 1.5rem 1.5rem;
         z-index: 10;
 
 
-        right: 0;
-        top: 0;
+        right: 1rem;
+        top: 1.5rem;
     }
 
     .top {

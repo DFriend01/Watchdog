@@ -42,7 +42,6 @@
                 3. Your response should be no longer than 3 sentences.
 
                 ---
-
             `
             
             //prompt: "Detect if the following text contains false information. Explain your reasoning. Must start the response with yes or no. If neither, say N/A.\n\n",
@@ -50,7 +49,16 @@
         {
             yes: "This content could be Ai generated.",
             no: "This content is probably not Ai generated",
-            prompt: "Detect if the following text is Ai generated? Explain your reasonings. Must start the response with yes or no. If neither, say N/A.\n\n",
+            prompt: `
+                You are an AI assistant that helps consumers indentify AI generated content on the internet. Detect if the provided text after the triple dash
+                lines is made by Ai or not. Your answer should include the following:
+
+                1. A "Yes" or "No" statement indicating that the text is made by Ai or not. If you cannot tell, then indicate this.
+                2. You should explain why you came to your conclusion, specifically referencing the originally provided text.
+                3. Your response should be no longer than 3 sentences.
+
+                ---
+            `,
         },
     ];
 
