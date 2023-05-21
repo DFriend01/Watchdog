@@ -17,7 +17,12 @@
   let mobile: boolean = false;
   $: {
     if (mobile && keyBoardPadding){
-      scrollTo
+        setTimeout(() => {
+          scrollTo({
+        top:10000,
+        behavior:"smooth"
+      })
+        }, 100);
     }
   }
   onMount(() => {
