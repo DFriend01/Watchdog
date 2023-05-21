@@ -21,7 +21,7 @@
         <div class="dropRoot">
             <img
                 alt="checkmark"
-                src={`https://watchdog-iota.vercel.app/icons/${
+                src={`icons/${
                     !isYes ? "check.svg" : "cross.svg"
                 }`}
             />
