@@ -2,10 +2,12 @@
   import Navigation from "$lib/navigation.svelte";
   import FeatureDiv from "$lib/featureDiv.svelte";
   import UserDiv from "$lib/userDiv.svelte";
-  import Footer from "$lib//footer.svelte";
+  import Footer from "$lib/footer.svelte";
+  import DesktopMenu from "$lib/desktopMenu.svelte";
 </script>
 
 <div class="nav">
+  <DesktopMenu />
   <Navigation />
 </div>
 
@@ -363,10 +365,12 @@
       padding-top: var(--sp-160);
       display: flex;
       flex-direction: row-reverse;
-      gap: var(--sp-40);
+      gap: var(--sp-80);
+      justify-content: space-between;
       align-items: center;
     }
 
+    .hero-image,
     .hero-content {
       width: 50%;
     }
