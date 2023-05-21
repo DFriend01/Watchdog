@@ -78,8 +78,7 @@
         height: auto;
 
         max-height: 500px;
-        overflow: scroll;
-
+      
         z-index: 10;
 
         transform: translate(-50%, -50%);
