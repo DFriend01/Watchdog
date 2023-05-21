@@ -3,7 +3,7 @@ const errorText = "Something went wrong serving your request.";
 
 async function askGPT(text){
 
-    console.log("debug", text)
+  
     const res =  await fetch(apiRoute, {
         mode: 'cors',
         method:"POST",
@@ -109,8 +109,7 @@ chrome.runtime.onMessage.addListener((msg, sender, responder) => {
     if (msg.action === 'watchdogContextSelected') {
         text = (msg.content === undefined) ? "" : msg.content;
         askGPT(text).then(txt => {
-            alert(msg.content)
-            insertMsgBox(msg.content)
+            insertMsgBox(txt)
         });
     }
 });
