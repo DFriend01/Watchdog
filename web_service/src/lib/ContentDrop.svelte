@@ -9,44 +9,13 @@
     let show = false;
 </script>
 
-{#if show}
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div
-        class="shadow"
-        on:click={() => (show = false)}
-        transition:fade={{ duration: 200 }}
-    />
 
-    <div class="displayRoot" transition:fly={{duration:200, y:-35 }}>
-        <div class="dropRoot">
-            <img
-                alt="checkmark"
-                src={`icons/${
-                    !isYes ? "check.svg" : "cross.svg"
-                }`}
-            />
-
-            <p>
-                {#if isYes}
-                    {yes}
-                {:else}
-                    {no}
-                {/if}
-            </p>
-        </div>
-        <p>
-            {content}
-        </p>
-    </div>
-
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-{/if}
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="dropRoot" on:click={() => (show = true)}>
+<div class="dropRoot" on:click={() => (show = !show)}>
     <img
         alt="checkmark"
-        src={`https://watchdog-iota.vercel.app/icons/${
+        src={`icons/${
             !isYes ? "check.svg" : "cross.svg"
         }`}
     />
@@ -59,33 +28,36 @@
         {/if}
     </p>
 
-    <div class="arrow">
+    <div class="arrow" class:down={show}>
         <div class="line1" />
         <div class="line2" />
     </div>
+    
 </div>
+
+{#if show}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="displayRoot" transition:fly={{duration:200, y:-35 }}>
+        <p>
+            {content}
+        </p>
+    </div>
+{/if}
 
 <style>
     .displayRoot {
-        position: fixed;
 
-        background-color: #fafafa;
 
-        top: 50%;
-        left: 50%;
-
-        width: calc(100vw - 2rem);
+        width: auto;
         height: auto;
 
         max-height: 500px;
       
-        z-index: 10;
-
-        transform: translate(-50%, -50%);
+     
     }
 
-    .displayRoot > .dropRoot > p{
-        font-size: larger;
+    .down{
+        transform: rotate(45deg) !important;;
     }
 
     .displayRoot > p {
@@ -93,18 +65,7 @@
         font-size: larger!important;
     }
 
-    .shadow {
-        position: fixed;
-        top: 0;
-        left: 0;
-
-        background-color: black;
-        opacity: 0.4;
-
-        width: 100%;
-        height: 100%;
-        z-index: 5;
-    }
+   
 
     .dropRoot {
         display: flex;
@@ -141,10 +102,12 @@
         width: 0.5rem;
         height: 0.5rem;
 
-        transform: rotate(45deg);
+        transform: rotate(135deg);
 
         margin-left: auto;
         margin-right: 0.5rem;
+
+        transition:transform 0.3s ease-out;
     }
 
     .line1 {
