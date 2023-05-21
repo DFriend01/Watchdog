@@ -47,12 +47,12 @@ let questions = [
     {
         yes: "This content could contain misinformation.",
         no: "This content appears to be truthful.",
-        prompt: "Detect if the following text contains false information. Explain your reasoning. Must start the response with yes or no. If neither, say N/A."
+        prompt: "Detect if the following text contains false information. Explain your reasoning. Must start the response with yes or no. If neither, say N/A.\n\n"
     },
     {
         yes: "This content could be Ai generated.",
         no: "This content is probably not Ai generated",
-        prompt: "Detect if the following text is Ai generated? Explain your reasonings. Must start the response with yes or no. If neither, say N/A."
+        prompt: "Detect if the following text is Ai generated? Explain your reasonings. Must start the response with yes or no. If neither, say N/A.\n\n"
     }
 ]
 
