@@ -2,8 +2,11 @@
 </script>
 
 <script lang="ts">
+  import ContentDrop from "$lib/ContentDrop.svelte";
+
   import PromptButton from "$lib/promptButton.svelte";
   import { onMount } from "svelte";
+  import { fly } from "svelte/transition";
   // import Device from 'svelte-device-info'
   let keyBoardPadding = false;
 
@@ -14,56 +17,151 @@
     var largerEdgeSize = Math.max(ViewportWidth, ViewportHeight);
     return smallerEdgeSize <= 480 && largerEdgeSize <= 896;
   }
+
   let mobile: boolean = false;
   $: {
-    if (mobile && keyBoardPadding){
-        setTimeout(() => {
-          scrollTo({
-        top:10000,
-        behavior:"smooth"
-      })
-        }, 100);
+    if (mobile && keyBoardPadding) {
+      setTimeout(() => {
+        scrollTo({
+          top: 10000,
+          behavior: "smooth",
+        });
+      }, 100);
     }
   }
   onMount(() => {
     mobile = DeviceIsPhone();
   });
+
+  let prompt = "";
+
+  const apiRoute = "/api/gpt/scam";
+
+  let results: string[] = [];
+  let loading = false;
+
+  $: if (results.length === questions.length) {
+    loading = false;
+  }
+
+  const questions = [
+    {
+      yes: "This Content could be a scam. ",
+      no: "This content is most likely not a scam.",
+
+      prompt: `
+                You are an AI assistant who helps consumers identify if text content could be scam. 
+                Detect if the provided text after the triple dash lines could be a scam. Your answer should include the following:
+                
+                1. A "Yes" or "No" statement indicating that the text is a scam or not.
+                2. You should explain why you came to your conclusion, specifically referencing the originally provided text.
+                3. Your response should be no longer than 3 sentences.
+
+                ---
+
+            `,
+      //prompt: "Detect if its possible the following text contains any attempt to scam. Explain your reasoning. Must start the response with Yes if so, or with No otherwise. Respond with N/A if neither.\n\n",
+    },
+    {
+      yes: "This content could contain misinformation.",
+      no: "This content appears to be truthful.",
+      prompt: `
+                You are an AI assistant that helps consumers indentify misinformation on the internet. Detect if the provided text after the triple dash
+                lines is truthful or not. Your answer should include the following:
+
+                1. A "Yes" or "No" statement indicating that the text is misinformation or not. If you cannot tell, then indicate this.
+                2. You should explain why you came to your conclusion, specifically referencing the originally provided text.
+                3. Your response should be no longer than 3 sentences.
+
+                ---
+            `,
+
+      //prompt: "Detect if the following text contains false information. Explain your reasoning. Must start the response with yes or no. If neither, say N/A.\n\n",
+    },
+    {
+      yes: "This content could be Ai generated.",
+      no: "This content is probably not Ai generated",
+      prompt: `
+                You are an AI assistant that helps consumers indentify AI generated content on the internet. Detect if the provided text after the triple dash
+                lines is made by Ai or not. Your answer should include the following:
+
+                1. A "Yes" or "No" statement indicating that the text is made by Ai or not. If you cannot tell, then indicate this.
+                2. You should explain why you came to your conclusion, specifically referencing the originally provided text.
+                3. Your response should be no longer than 3 sentences.
+
+                ---
+            `,
+    },
+  ];
+
+  async function askGPT(text: string, prompt: string) {
+    let stuff = await fetch(apiRoute, {
+     
+      method: "POST",
+      body: JSON.stringify({
+        prompt: prompt + text,
+      }),
+    });
+    return stuff.text();
+  }
+
+  async function checkQuestions() {
+    loading = true;
+    results = [];
+    Promise.all(questions.map((item) => askGPT(prompt, item.prompt))).then(
+      (res) => {
+        results = res.map((item) => item.replace(/^[^\w]*/g, ""));
+      }
+    );
+  }
 </script>
 
 <div class="watchdog-container" class:padBottom={keyBoardPadding && mobile}>
   <div class="watchdog-content-container">
-    <h4>Watch out for suspicious stuff with Watchdog</h4>
-    <p class="paragraph">
-      Watch out for scams and stuff with Watchdog, your AI-powered protector
-      from suspicious stuff online. Try it with the following prompts below.
-    </p>
+    {#if loading}
+      <h4>Currently Loading...</h4>
+    {/if}
 
-    <div class="prompts-container">
-      <PromptButton
-        ><p class="paragraph">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!
-        </p></PromptButton
-      >
-      <PromptButton
-        ><p class="paragraph">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!
-        </p></PromptButton
-      >
-      <PromptButton
-        ><p class="paragraph">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!
-        </p></PromptButton
-      >
-    </div>
+    {#if results.length === 0 && !loading}
+      <h4>Watch out for suspicious stuff with Watchdog</h4>
+      <p class="paragraph">
+        Watch out for scams and stuff with Watchdog, your AI-powered protector
+        from suspicious stuff online. Try it with the following prompts below.
+      </p>
+      <div class="prompts-container">
+        <PromptButton content="Prompt AAAAAAAA" on:click={()=>prompt='AAAAAAAAAAAAAA'}/>
+        <div class="prompts-container">
+          <PromptButton content="Prompt BBBBB" on:click={()=>prompt='BBBBBBBBBBBBBBBBBB'}/>
+        </div>
+        <div class="prompts-container">
+          <PromptButton content="Prompt CCCCCCCCC" on:click={()=>prompt='CCCCCCCCCCCCCCCCCCCCC'}/>
+        </div>
+      </div>
+    {/if}
+
+    {#if results.length > 0}
+      <p style="font-weight:bold; margin-top:auto;">Results</p>
+    {/if}
+    {#each [...Array(results.length).keys()] as i}
+      <div in:fly={{ duration: 200, x: -25, delay: 100 * i }}>
+        <ContentDrop
+          yes={questions[i].yes}
+          no={questions[i].no}
+          content={results[i]}
+        />
+      </div>
+    {/each}
   </div>
 
   <div class="input-container" class:moveUp={keyBoardPadding && mobile}>
     <input
+      bind:value={prompt}
+      type="text"
       placeholder="Enter prompt here…"
       on:focus={() => (keyBoardPadding = true)}
       on:focusout={() => (keyBoardPadding = false)}
     />
-    <button>
+    <button on:click={checkQuestions}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
