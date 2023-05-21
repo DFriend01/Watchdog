@@ -1,15 +1,16 @@
 <script>
-  export let targetLink = "";
+ 
+  export let content = "";
 </script>
 
-<a
-  href={targetLink}
+<div
+on:click
   class="prompt-button"
 >
 
   <div class="prompt-content">
     <p class="overline-3">Try this prompt</p>
-    <p class="body"><slot /></p>
+    <p class="body">{content}</p>
   </div>
   <div class="button-icon">
     <svg
@@ -25,7 +26,7 @@
       />
     </svg>
   </div>
-</a>
+</div>
 
 <style>
   a:focus,
@@ -65,5 +66,8 @@
 
   .button-icon > svg {
     color: var(--text-sm);
+  }
+  .body {
+    font-size: small;
   }
 </style>
