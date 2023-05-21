@@ -6,6 +6,7 @@
   href={targetLink}
   class="prompt-button"
 >
+
   <div class="prompt-content">
     <p class="overline-3">Try this prompt</p>
     <p class="body"><slot /></p>
