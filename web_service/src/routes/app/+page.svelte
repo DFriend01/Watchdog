@@ -106,7 +106,7 @@
   }
 
   .prompts-container {
-    margin-top: var(--sp-20);
+    margin-top: var(--sp-40);
     display: flex;
     flex-direction: column;
     gap: var(--sp-12);

@@ -27,6 +27,13 @@
 </a>
 
 <style>
+  a:focus,
+  *.focus {
+    color: var(--text-md);
+    border: 1px solid var(--slate-300);
+    outline: none;
+  }
+
   .prompt-button {
     display: flex;
     flex-direction: row;
