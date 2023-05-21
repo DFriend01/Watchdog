@@ -16,7 +16,9 @@
   }
   let mobile: boolean = false;
   $: {
-    console.log(mobile)
+    if (mobile && keyBoardPadding){
+      scrollTo
+    }
   }
   onMount(() => {
     mobile = DeviceIsPhone();
@@ -73,10 +75,10 @@
 
 <style>
   .moveUp {
-    transform: translate(0, -40vh);
+    transform: translate(0, -30vh);
   }
   .padBottom {
-    padding-bottom: 40vh;
+    padding-bottom: 30vh;
   }
   .watchdog-content-container {
     padding: var(--sp-20);
